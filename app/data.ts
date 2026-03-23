@@ -2,7 +2,7 @@
 // Doctoral Thesis: Impact of Erasmus+ KA122 actions in secondary/FP centers (South Madrid)
 
 export const thesisInfo = {
-  title: 'Impacto de las Acciones KA122 del Programa Erasmus+ en los Centros de Educación Secundaria y Formación Profesional del Sur de la Comunidad de Madrid',
+  title: 'Impacto de las Acciones Erasmus+ KA122 en los Centros de Educación Secundaria del Sur de la Comunidad de Madrid',
   author: 'Javier Oviedo',
   program: 'Programa Erasmus+ 2021-2027',
   action: 'KA122 — Movilidad de corta duración',

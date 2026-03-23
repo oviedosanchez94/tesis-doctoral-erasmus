@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import { demographics, impactResults, projectContext } from '../data'
 import dynamic from 'next/dynamic'
 import {
@@ -22,29 +23,41 @@ function MetricCard({ value, label, sub }: { value: string; label: string; sub?:
 
 const especialidades = demographics.especialidad
 
-// Bar chart for competence levels
+// Stacked bar for competence levels with tooltip on hover
 function CompetenceBar({ data, label }: { data: { name: string; value: number }[]; label: string }) {
   const total = data.reduce((s, d) => s + d.value, 0)
+  const [hovered, setHovered] = useState<{ name: string; value: number; color: string } | null>(null)
   return (
     <div>
       <p className="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wide">{label}</p>
-      <div className="flex h-6 rounded-full overflow-hidden gap-px">
+      <div className="relative flex h-6 rounded-full overflow-hidden gap-px">
         {data.map((d, i) => (
           <div
             key={d.name}
             style={{ width: `${(d.value / total) * 100}%`, background: COLORS[i] }}
-            title={`${d.name}: ${d.value}`}
+            className="transition-opacity hover:opacity-80 cursor-default"
+            onMouseEnter={() => setHovered({ name: d.name, value: d.value, color: COLORS[i] })}
+            onMouseLeave={() => setHovered(null)}
           />
         ))}
       </div>
-      <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
-        {data.map((d, i) => (
-          <div key={d.name} className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-sm flex-shrink-0" style={{ background: COLORS[i] }} />
-            <span className="text-[11px] text-gray-600">{d.name} <b>{d.value}</b></span>
-          </div>
-        ))}
-      </div>
+      {hovered && (
+        <div className="mt-2 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-sm flex-shrink-0" style={{ background: hovered.color }} />
+          <span className="text-xs font-semibold text-[#1d1d1f]">{hovered.name}:</span>
+          <span className="text-xs text-gray-600">{hovered.value} {hovered.value === 1 ? 'persona' : 'personas'}</span>
+        </div>
+      )}
+      {!hovered && (
+        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+          {data.map((d, i) => (
+            <div key={d.name} className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-sm flex-shrink-0" style={{ background: COLORS[i] }} />
+              <span className="text-[11px] text-gray-600">{d.name} <b>{d.value}</b></span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -58,10 +71,10 @@ export default function Dashboard() {
           <div className="max-w-2xl">
             <span className="text-[#99c8ff] text-sm font-medium uppercase tracking-widest">Tesis Doctoral</span>
             <h1 className="text-2xl font-semibold mt-2 leading-snug">
-              Impacto de las Acciones KA122 del Programa Erasmus+
+              Impacto de las Acciones Erasmus+ KA122 en los Centros de Educación Secundaria del Sur de la Comunidad de Madrid
             </h1>
             <p className="text-blue-100 mt-2 text-sm leading-relaxed">
-              Centros de Educación Secundaria y Formación Profesional del sur de la Comunidad de Madrid · Erasmus+ 2021-2027
+              Centros de Educación Secundaria del sur de la Comunidad de Madrid · Erasmus+ 2021-2027
             </p>
           </div>
           <div className="flex gap-2 flex-wrap">

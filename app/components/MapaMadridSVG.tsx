@@ -1,6 +1,6 @@
 'use client'
-import { useEffect, useState } from 'react'
-import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps'
+import { useState } from 'react'
+import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 
 const GEO_URL = '/madrid-municipios.json'
 
@@ -14,63 +14,75 @@ const PARTICIPANTES = new Set([
 
 export default function MapaMadridSVG() {
   const [tooltip, setTooltip] = useState<{ name: string; x: number; y: number } | null>(null)
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect(() => { setLoaded(true) }, [])
-  if (!loaded) return null
 
   return (
-    <div className="relative w-full" style={{ height: 380 }}>
+    <div
+      data-map-container
+      className="relative w-full"
+      style={{ height: 380 }}
+      onMouseLeave={() => setTooltip(null)}
+    >
       <ComposableMap
         projection="geoMercator"
-        projectionConfig={{ center: [-3.85, 40.45], scale: 8500 }}
+        projectionConfig={{ center: [-3.816, 40.525], scale: 8500 }}
         style={{ width: '100%', height: '100%' }}
       >
-        <ZoomableGroup zoom={1} minZoom={1} maxZoom={4}>
-          <Geographies geography={GEO_URL}>
-            {({ geographies }) =>
-              geographies.map((geo) => {
-                const name = geo.properties.name as string
-                const isParticipante = PARTICIPANTES.has(name)
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    onMouseEnter={(e) => {
-                      setTooltip({ name, x: e.clientX, y: e.clientY })
-                    }}
-                    onMouseMove={(e) => {
-                      setTooltip({ name, x: e.clientX, y: e.clientY })
-                    }}
-                    onMouseLeave={() => setTooltip(null)}
-                    style={{
-                      default: {
-                        fill: isParticipante ? '#0071e3' : '#e8f0fb',
-                        stroke: '#ffffff',
-                        strokeWidth: 0.4,
-                        outline: 'none',
-                      },
-                      hover: {
-                        fill: isParticipante ? '#0058b0' : '#c7d9f0',
-                        stroke: '#ffffff',
-                        strokeWidth: 0.4,
-                        outline: 'none',
-                        cursor: 'pointer',
-                      },
-                      pressed: { outline: 'none' },
-                    }}
-                  />
-                )
-              })
-            }
-          </Geographies>
-        </ZoomableGroup>
+        <Geographies geography={GEO_URL}>
+          {({ geographies }) =>
+            geographies.map((geo) => {
+              const name = geo.properties.name as string
+              const isParticipante = PARTICIPANTES.has(name)
+              return (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  onMouseEnter={(e) => {
+                    const rect = (e.currentTarget as SVGElement)
+                      .closest('.rsm-svg')
+                      ?.getBoundingClientRect()
+                    const parentRect = (e.currentTarget as SVGElement)
+                      .closest('[data-map-container]')
+                      ?.getBoundingClientRect()
+                    const x = e.clientX - (parentRect?.left ?? 0)
+                    const y = e.clientY - (parentRect?.top ?? 0)
+                    setTooltip({ name, x, y })
+                  }}
+                  onMouseMove={(e) => {
+                    const parentRect = (e.currentTarget as SVGElement)
+                      .closest('[data-map-container]')
+                      ?.getBoundingClientRect()
+                    const x = e.clientX - (parentRect?.left ?? 0)
+                    const y = e.clientY - (parentRect?.top ?? 0)
+                    setTooltip({ name, x, y })
+                  }}
+                  onMouseLeave={() => setTooltip(null)}
+                  style={{
+                    default: {
+                      fill: isParticipante ? '#0071e3' : '#e8f0fb',
+                      stroke: '#ffffff',
+                      strokeWidth: 0.4,
+                      outline: 'none',
+                    },
+                    hover: {
+                      fill: isParticipante ? '#0058b0' : '#c7d9f0',
+                      stroke: '#ffffff',
+                      strokeWidth: 0.4,
+                      outline: 'none',
+                      cursor: 'pointer',
+                    },
+                    pressed: { outline: 'none' },
+                  }}
+                />
+              )
+            })
+          }
+        </Geographies>
       </ComposableMap>
 
       {/* Tooltip */}
       {tooltip && (
         <div
-          className="fixed z-50 bg-[#1d1d1f] text-white text-xs font-medium px-2.5 py-1.5 rounded-lg pointer-events-none shadow-lg"
+          className="absolute z-50 bg-[#1d1d1f] text-white text-xs font-medium px-2.5 py-1.5 rounded-lg pointer-events-none shadow-lg"
           style={{ left: tooltip.x + 12, top: tooltip.y - 30 }}
         >
           {tooltip.name}
