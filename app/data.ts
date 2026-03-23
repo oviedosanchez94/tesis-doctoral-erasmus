@@ -33,6 +33,20 @@ export const demographics = {
     { name: '5-9 años', value: 8 },
     { name: '10-20 años', value: 10 },
   ],
+  nivelIngles: [
+    { name: 'A1', value: 1 },
+    { name: 'B1', value: 1 },
+    { name: 'B2', value: 4 },
+    { name: 'C1', value: 6 },
+    { name: 'C2', value: 6 },
+  ],
+  competenciaDigital: [
+    { name: 'A1', value: 1 },
+    { name: 'A2', value: 6 },
+    { name: 'B1', value: 3 },
+    { name: 'B2', value: 5 },
+    { name: 'C1', value: 3 },
+  ],
   especialidad: [
     { name: 'Inglés', value: 7 },
     { name: 'Educación Física', value: 2 },
