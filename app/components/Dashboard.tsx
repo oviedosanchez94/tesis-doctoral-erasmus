@@ -1,5 +1,6 @@
 'use client'
 import { demographics, impactResults, projectContext } from '../data'
+import MapaMadrid from './MapaMadrid'
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, Legend,
@@ -127,31 +128,24 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Impact Overview */}
+      {/* Mapa municipios */}
       <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-base font-semibold text-[#1d1d1f] mb-1">Resumen de Impacto por Dimensión</h3>
-        <p className="text-xs text-gray-400 mb-6">Media en escala Likert 1–4 por área temática evaluada</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { label: 'Cultura Organizativa', mean: parseFloat(avgCultura), color: '#0071e3', max: 4 },
-            { label: 'Impacto en Alumnado', mean: parseFloat(avgAlumnado), color: '#30d158', max: 4 },
-            { label: 'Metodología Docente', mean: 2.48, color: '#ff9f0a', max: 4 },
-            { label: 'Gestión y Satisfacción', mean: 3.74, color: '#bf5af2', max: 4 },
-          ].map((item) => (
-            <div key={item.label} className="flex flex-col">
-              <div className="flex justify-between items-baseline mb-2">
-                <span className="text-xs font-medium text-gray-700">{item.label}</span>
-                <span className="text-lg font-semibold" style={{ color: item.color }}>{item.mean}</span>
-              </div>
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-all duration-500"
-                  style={{ width: `${(item.mean / item.max) * 100}%`, background: item.color }}
-                />
-              </div>
-              <span className="text-[10px] text-gray-400 mt-1">sobre 4.0</span>
-            </div>
-          ))}
+        <div className="flex items-start justify-between mb-4 flex-wrap gap-2">
+          <div>
+            <h3 className="text-base font-semibold text-[#1d1d1f] mb-1">Municipios Participantes</h3>
+            <p className="text-xs text-gray-400">Centros de la muestra — Sur de la Comunidad de Madrid</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {['Leganés', 'Alcorcón', 'Parla', 'Aranjuez', 'San Martín de Valdeiglesias'].map((m) => (
+              <span key={m} className="inline-flex items-center gap-1.5 text-xs font-medium bg-[#0071e3]/10 text-[#0071e3] px-2.5 py-1 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3]" />
+                {m}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-gray-100" style={{ height: 380 }}>
+          <MapaMadrid />
         </div>
       </div>
 
