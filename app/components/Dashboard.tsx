@@ -1,5 +1,5 @@
 'use client'
-import { demographics, impactResults, projectContext, thesisInfo } from '../data'
+import { demographics, impactResults, projectContext } from '../data'
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, Legend,
@@ -20,7 +20,7 @@ function MetricCard({ value, label, sub }: { value: string; label: string; sub?:
 const avgCultura = (impactResults.culturaOrganizativa.reduce((s, x) => s + x.mean, 0) / impactResults.culturaOrganizativa.length).toFixed(2)
 const avgAlumnado = (impactResults.impactoAlumnado.reduce((s, x) => s + x.mean, 0) / impactResults.impactoAlumnado.length).toFixed(2)
 
-const topCountries = projectContext.paises.slice(0, 6)
+const especialidades = demographics.especialidad
 
 export default function Dashboard() {
   return (
@@ -104,20 +104,24 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Countries */}
+        {/* Especialidades */}
         <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h3 className="text-base font-semibold text-[#1d1d1f] mb-1">Países Socios</h3>
-          <p className="text-xs text-gray-400 mb-5">Número de proyectos con cada país (top 6)</p>
-          <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={topCountries} layout="vertical" margin={{ left: 10, right: 20 }}>
+          <h3 className="text-base font-semibold text-[#1d1d1f] mb-1">Profesorado por Especialidad</h3>
+          <p className="text-xs text-gray-400 mb-5">Distribución de participantes según área de docencia</p>
+          <ResponsiveContainer width="100%" height={240}>
+            <BarChart data={especialidades} layout="vertical" margin={{ left: 10, right: 30 }}>
               <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f0f0f0" />
-              <XAxis type="number" tick={{ fontSize: 11, fill: '#6e6e73' }} tickLine={false} axisLine={false} />
-              <YAxis type="category" dataKey="name" tick={{ fontSize: 12, fill: '#1d1d1f' }} tickLine={false} axisLine={false} width={70} />
+              <XAxis type="number" tick={{ fontSize: 11, fill: '#6e6e73' }} tickLine={false} axisLine={false} allowDecimals={false} />
+              <YAxis type="category" dataKey="name" tick={{ fontSize: 11, fill: '#1d1d1f' }} tickLine={false} axisLine={false} width={140} />
               <Tooltip
                 contentStyle={{ borderRadius: 12, border: '1px solid #e5e7eb', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}
-                formatter={(v: number) => [v, 'Proyectos']}
+                formatter={(v: number) => [v, 'Docentes']}
               />
-              <Bar dataKey="value" fill="#0071e3" radius={[0, 6, 6, 0]} />
+              <Bar dataKey="value" radius={[0, 6, 6, 0]}>
+                {especialidades.map((_, i) => (
+                  <Cell key={i} fill={i === 0 ? '#0071e3' : '#c7e0f9'} />
+                ))}
+              </Bar>
             </BarChart>
           </ResponsiveContainer>
         </div>

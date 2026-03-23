@@ -33,6 +33,18 @@ export const demographics = {
     { name: '5-9 años', value: 8 },
     { name: '10-20 años', value: 10 },
   ],
+  especialidad: [
+    { name: 'Inglés', value: 7 },
+    { name: 'Educación Física', value: 2 },
+    { name: 'Matemáticas', value: 2 },
+    { name: 'Tecnología', value: 1 },
+    { name: 'Atención a la diversidad', value: 1 },
+    { name: 'Geografía e Historia', value: 1 },
+    { name: 'Física / Química', value: 1 },
+    { name: 'Lengua castellana y Latín', value: 1 },
+    { name: 'Educación y plástica', value: 1 },
+    { name: 'Filosofía', value: 1 },
+  ],
 }
 
 // ─── Project Context ─────────────────────────────────────────────────────────
