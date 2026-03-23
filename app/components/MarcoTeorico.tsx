@@ -69,7 +69,7 @@ export default function MarcoTeorico() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {(theorySections[2].biases ?? []).map((bias, i) => (
             <div key={i} className="rounded-xl border border-gray-100 p-5 hover:border-[#0071e3]/30 hover:shadow-sm transition-all">
-              <div className="w-8 h-8 flex items-center justify-center rounded-full bg-[#ff453a]/10 text-[#ff453a] text-sm font-bold mb-3">
+              <div className="w-8 h-8 flex items-center justify-center rounded-full bg-[#0071e3]/10 text-[#0071e3] text-sm font-bold mb-3">
                 {i + 1}
               </div>
               <h3 className="text-sm font-semibold text-[#1d1d1f] mb-2">{bias.name}</h3>
@@ -78,9 +78,9 @@ export default function MarcoTeorico() {
           ))}
         </div>
 
-        <div className="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-100">
-          <p className="text-sm text-amber-800 font-medium">Dimensión territorial específica</p>
-          <p className="text-xs text-amber-700 mt-1 leading-relaxed">
+        <div className="mt-6 p-4 rounded-xl bg-[#0a4fa6]/5 border border-[#0a4fa6]/15">
+          <p className="text-sm text-[#0a4fa6] font-medium">Dimensión territorial específica</p>
+          <p className="text-xs text-[#2d86c9] mt-1 leading-relaxed">
             Los centros del sur de la Comunidad de Madrid presentan mayor diversidad cultural del alumnado, entornos socioeconómicos más heterogéneos y trayectoria más limitada de participación en programas europeos. Esta especificidad no ha sido objeto de análisis en ningún estudio previo sobre KA122.
           </p>
         </div>

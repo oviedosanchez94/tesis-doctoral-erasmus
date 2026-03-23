@@ -2,10 +2,10 @@
 import { hypotheses } from '../data'
 
 const resultadoConfig: Record<string, { bg: string; text: string }> = {
-  CONFIRMADA: { bg: '#34c75915', text: '#1a7a35' },
-  'CONFIRMADA PARCIALMENTE': { bg: '#ff9f0a15', text: '#b06000' },
-  'REFUTADA PARCIALMENTE': { bg: '#ff453a15', text: '#c0392b' },
-  REFUTADA: { bg: '#ff453a15', text: '#c0392b' },
+  CONFIRMADA: { bg: '#0071e315', text: '#0058b0' },
+  'CONFIRMADA PARCIALMENTE': { bg: '#2d86c915', text: '#1a5f8f' },
+  'REFUTADA PARCIALMENTE': { bg: '#0a4fa615', text: '#0a4fa6' },
+  REFUTADA: { bg: '#0a4fa615', text: '#0a4fa6' },
 }
 
 export default function Hipotesis() {

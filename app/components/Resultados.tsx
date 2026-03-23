@@ -7,9 +7,9 @@ import {
 } from 'recharts'
 
 const SCALE_COLORS: Record<string, string> = {
-  nada: '#ff453a',
-  poco: '#ff9f0a',
-  bastante: '#30d158',
+  nada: '#c7e0f9',
+  poco: '#5ac8fa',
+  bastante: '#2d86c9',
   mucho: '#0071e3',
 }
 
@@ -89,7 +89,7 @@ export default function Resultados() {
                 <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full"
-                    style={{ width: `${(d.media / 4) * 100}%`, background: d.media >= 3.5 ? '#0071e3' : d.media >= 3 ? '#30d158' : '#ff9f0a' }}
+                    style={{ width: `${(d.media / 4) * 100}%`, background: d.media >= 3.5 ? '#0071e3' : d.media >= 3 ? '#2d86c9' : '#5ac8fa' }}
                   />
                 </div>
               </div>
@@ -115,8 +115,8 @@ export default function Resultados() {
         <h2 className="text-lg font-semibold mb-1">Bloque C — Impacto en el Alumnado</h2>
         <p className="text-xs text-gray-400 mb-6">Distribución de respuestas Likert · relativo a H3</p>
         <LikertBar data={impactResults.impactoAlumnado} />
-        <div className="mt-4 p-4 rounded-xl bg-[#30d158]/5 border border-[#30d158]/10">
-          <p className="text-xs text-[#1a7a35] font-medium">
+        <div className="mt-4 p-4 rounded-xl bg-[#0071e3]/5 border border-[#0071e3]/10">
+          <p className="text-xs text-[#0058b0] font-medium">
             Las competencias lingüísticas (media 3.82) destacan sobre los resultados académicos convencionales (3.33), confirmando la disociación competencia–rendimiento prevista en H3.
           </p>
         </div>
@@ -127,8 +127,8 @@ export default function Resultados() {
         <h2 className="text-lg font-semibold mb-1">Bloque D — Práctica Docente</h2>
         <p className="text-xs text-gray-400 mb-6">Cambio en métodos de enseñanza · relativo a H1</p>
         <LikertBar data={impactResults.impactoDocente} />
-        <div className="mt-4 p-4 rounded-xl bg-amber-50 border border-amber-100">
-          <p className="text-xs text-amber-800 font-medium">
+        <div className="mt-4 p-4 rounded-xl bg-[#2d86c9]/5 border border-[#2d86c9]/20">
+          <p className="text-xs text-[#0a4fa6] font-medium">
             El cambio en métodos de enseñanza individuales (media 2.24/4) es el indicador más bajo de todos, lo que refuerza la hipótesis H1 de que el impacto organizativo supera al metodológico individual en el corto plazo.
           </p>
         </div>
@@ -144,9 +144,9 @@ export default function Resultados() {
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { label: 'Muy Satisfactoria', value: 14, total: 18, color: '#0071e3' },
-            { label: 'Satisfactoria', value: 3, total: 18, color: '#30d158' },
-            { label: 'Recomendarían', value: 17, total: 18, color: '#bf5af2' },
-            { label: 'Repetirían', value: 18, total: 18, color: '#ff9f0a' },
+            { label: 'Satisfactoria', value: 3, total: 18, color: '#2d86c9' },
+            { label: 'Recomendarían', value: 17, total: 18, color: '#0a4fa6' },
+            { label: 'Repetirían', value: 18, total: 18, color: '#5ac8fa' },
           ].map((s) => (
             <div key={s.label} className="text-center p-4 rounded-xl bg-gray-50">
               <div className="text-3xl font-semibold" style={{ color: s.color }}>{s.value}</div>

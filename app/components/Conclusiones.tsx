@@ -10,21 +10,21 @@ const conclusiones = [
   },
   {
     n: '2',
-    color: '#ff9f0a',
+    color: '#2d86c9',
     title: 'Patrones geográficos en elección de socios (H2)',
     desc: 'Alemania concentra el 72% de las colaboraciones, reflejando una preferencia por sistemas educativos con alta visibilidad internacional. La temática de Inclusión y Diversidad domina, coherente con los perfiles sociodemográficos de los centros del sur de Madrid.',
     implication: 'Los servicios de apoyo (SEPIE) deberían facilitar el acceso a información sobre sistemas educativos menos conocidos pero potencialmente más pertinentes.',
   },
   {
     n: '3',
-    color: '#30d158',
+    color: '#5ac8fa',
     title: 'Disociación competencia–rendimiento (H3)',
     desc: 'Las competencias lingüísticas (3.82/4) y la motivación destacan como efectos robustos de la movilidad, pero no se traducen linealmente en mejoras de los indicadores académicos convencionales, confirmando la limitación estructural de los instrumentos de evaluación vigentes.',
     implication: 'Es necesario desarrollar marcos evaluativos que capturen las competencias transversales desarrolladas por Erasmus+ más allá del rendimiento formal.',
   },
   {
     n: '4',
-    color: '#bf5af2',
+    color: '#0a4fa6',
     title: 'Barrera administrativa como obstáculo estructural (H4)',
     desc: 'El 100% de los participantes repetiría la experiencia, evidenciando que la motivación pedagógica no es el obstáculo. Sin embargo, la complejidad percibida de los trámites KA122 (media 3.88) confirma que la brecha de capacidad administrativa (Flisi et al., 2021) persiste incluso con la simplificación del ciclo 2021-2027.',
     implication: 'La sostenibilidad del programa depende de reducir la carga burocrática más que de incrementar la motivación del profesorado.',
@@ -119,8 +119,8 @@ export default function Conclusiones() {
         <h2 className="text-lg font-semibold mb-4">Limitaciones del Estudio</h2>
         <div className="space-y-3">
           {limitaciones.map((l, i) => (
-            <div key={i} className="flex gap-3 items-start p-3 rounded-xl bg-amber-50/60 border border-amber-100">
-              <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-700 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">!</span>
+            <div key={i} className="flex gap-3 items-start p-3 rounded-xl bg-[#5ac8fa]/10 border border-[#5ac8fa]/20">
+              <span className="w-5 h-5 rounded-full bg-[#5ac8fa]/20 text-[#0071e3] text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">!</span>
               <p className="text-sm text-gray-600 leading-relaxed">{l}</p>
             </div>
           ))}

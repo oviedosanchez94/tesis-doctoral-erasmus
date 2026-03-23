@@ -66,9 +66,9 @@ export default function Diseno() {
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
-            { color: '#ff453a', label: 'Sesgo nivel educativo', sub: 'Literatura dominante centrada en Ed. Superior' },
-            { color: '#ff9f0a', label: 'Sesgo escala individual', sub: 'El participante como unidad, no el centro' },
-            { color: '#bf5af2', label: 'Sesgo ciclo programático', sub: 'KA122 sin bibliografía consolidada (2021-)' },
+            { color: '#0071e3', label: 'Sesgo nivel educativo', sub: 'Literatura dominante centrada en Ed. Superior' },
+            { color: '#2d86c9', label: 'Sesgo escala individual', sub: 'El participante como unidad, no el centro' },
+            { color: '#0a4fa6', label: 'Sesgo ciclo programático', sub: 'KA122 sin bibliografía consolidada (2021-)' },
           ].map((b) => (
             <div key={b.label} className="rounded-xl p-4 border" style={{ borderColor: b.color + '40', background: b.color + '08' }}>
               <div className="w-3 h-3 rounded-full mb-2" style={{ background: b.color }} />

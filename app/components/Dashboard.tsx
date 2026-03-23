@@ -6,7 +6,7 @@ import {
   PieChart, Pie, Cell, Legend,
 } from 'recharts'
 
-const COLORS = ['#0071e3', '#30d158', '#ff9f0a', '#ff453a', '#bf5af2', '#5ac8fa']
+const COLORS = ['#0071e3', '#0a4fa6', '#2d86c9', '#5ac8fa', '#a8d4f5', '#c7e0f9']
 
 function MetricCard({ value, label, sub }: { value: string; label: string; sub?: string }) {
   return (
