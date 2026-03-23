@@ -1,0 +1,159 @@
+'use client'
+
+const conclusiones = [
+  {
+    n: '1',
+    color: '#0071e3',
+    title: 'Impacto diferencial confirmado (H1)',
+    desc: 'La movilidad KA122 genera transformaciones competenciales inmediatas en el docente individual, pero el cambio organizativo del centro opera a una velocidad significativamente menor, coherente con la distinción teórica entre cambio de primer y segundo orden (Fullan, 2007).',
+    implication: 'Los programas de acompañamiento post-movilidad son clave para transferir el aprendizaje individual al capital colectivo del centro.',
+  },
+  {
+    n: '2',
+    color: '#ff9f0a',
+    title: 'Patrones geográficos en elección de socios (H2)',
+    desc: 'Alemania concentra el 72% de las colaboraciones, reflejando una preferencia por sistemas educativos con alta visibilidad internacional. La temática de Inclusión y Diversidad domina, coherente con los perfiles sociodemográficos de los centros del sur de Madrid.',
+    implication: 'Los servicios de apoyo (SEPIE) deberían facilitar el acceso a información sobre sistemas educativos menos conocidos pero potencialmente más pertinentes.',
+  },
+  {
+    n: '3',
+    color: '#30d158',
+    title: 'Disociación competencia–rendimiento (H3)',
+    desc: 'Las competencias lingüísticas (3.82/4) y la motivación destacan como efectos robustos de la movilidad, pero no se traducen linealmente en mejoras de los indicadores académicos convencionales, confirmando la limitación estructural de los instrumentos de evaluación vigentes.',
+    implication: 'Es necesario desarrollar marcos evaluativos que capturen las competencias transversales desarrolladas por Erasmus+ más allá del rendimiento formal.',
+  },
+  {
+    n: '4',
+    color: '#bf5af2',
+    title: 'Barrera administrativa como obstáculo estructural (H4)',
+    desc: 'El 100% de los participantes repetiría la experiencia, evidenciando que la motivación pedagógica no es el obstáculo. Sin embargo, la complejidad percibida de los trámites KA122 (media 3.88) confirma que la brecha de capacidad administrativa (Flisi et al., 2021) persiste incluso con la simplificación del ciclo 2021-2027.',
+    implication: 'La sostenibilidad del programa depende de reducir la carga burocrática más que de incrementar la motivación del profesorado.',
+  },
+]
+
+const aportaciones = [
+  {
+    icon: '◉',
+    title: 'Aportación metodológica',
+    desc: 'El instrumento IRKA122 constituye la primera herramienta de evaluación diseñada específicamente para capturar el impacto institucional de las acciones KA122 en centros de secundaria y FP.',
+  },
+  {
+    icon: '◎',
+    title: 'Aportación empírica',
+    desc: 'Una de las primeras aproximaciones sistemáticas al impacto de las KA122 en el sur de la Comunidad de Madrid, un contexto específico no estudiado previamente en la literatura internacional.',
+  },
+  {
+    icon: '◈',
+    title: 'Aportación teórica',
+    desc: 'Identificación y documentación empírica de la brecha temporal entre impacto individual e institucional de la movilidad Erasmus+ en centros de educación no universitaria.',
+  },
+  {
+    icon: '◆',
+    title: 'Aportación política',
+    desc: 'Recomendaciones específicas para el SEPIE y la Comisión Europea sobre el diseño de futuras convocatorias KA122 orientadas a reducir barreras administrativas.',
+  },
+]
+
+const limitaciones = [
+  'Tamaño muestral reducido (N=18) — limita la generalización estadística pero permite profundidad cualitativa',
+  'Ausencia de grupo de control — no permite establecer relaciones causales directas',
+  'Carácter transversal — no captura la evolución del impacto a largo plazo',
+  'Posible sesgo de deseabilidad social en las respuestas al cuestionario',
+]
+
+export default function Conclusiones() {
+  return (
+    <div className="space-y-8 fade-in">
+      <div>
+        <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">Capítulo VI</span>
+        <h1 className="section-title mt-1">Conclusiones</h1>
+        <p className="section-subtitle">
+          Síntesis de los resultados, aportaciones originales, limitaciones y líneas de investigación futura.
+        </p>
+      </div>
+
+      {/* Main conclusions */}
+      <div className="space-y-4">
+        {conclusiones.map((c) => (
+          <div key={c.n} className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+            <div className="h-1" style={{ background: c.color }} />
+            <div className="p-6 grid grid-cols-1 md:grid-cols-5 gap-4">
+              <div className="md:col-span-3">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style={{ background: c.color }}>
+                    {c.n}
+                  </span>
+                  <h3 className="text-base font-semibold text-[#1d1d1f]">{c.title}</h3>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed">{c.desc}</p>
+              </div>
+              <div className="md:col-span-2">
+                <div className="h-full rounded-xl p-4 flex flex-col justify-center" style={{ background: c.color + '0d' }}>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-1" style={{ color: c.color }}>Implicación práctica</p>
+                  <p className="text-xs leading-relaxed" style={{ color: c.color + 'cc' }}>{c.implication}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Contributions */}
+      <div className="bg-white rounded-2xl border border-gray-100 p-8">
+        <h2 className="text-lg font-semibold mb-6">Aportaciones Originales de la Investigación</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {aportaciones.map((a) => (
+            <div key={a.title} className="flex gap-4 p-4 rounded-xl bg-gray-50">
+              <span className="text-[#0071e3] text-xl flex-shrink-0">{a.icon}</span>
+              <div>
+                <p className="text-sm font-semibold text-[#1d1d1f] mb-1">{a.title}</p>
+                <p className="text-xs text-gray-500 leading-relaxed">{a.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Limitations */}
+      <div className="bg-white rounded-2xl border border-gray-100 p-8">
+        <h2 className="text-lg font-semibold mb-4">Limitaciones del Estudio</h2>
+        <div className="space-y-3">
+          {limitaciones.map((l, i) => (
+            <div key={i} className="flex gap-3 items-start p-3 rounded-xl bg-amber-50/60 border border-amber-100">
+              <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-700 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">!</span>
+              <p className="text-sm text-gray-600 leading-relaxed">{l}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Future lines */}
+      <div className="bg-white rounded-2xl border border-gray-100 p-8">
+        <h2 className="text-lg font-semibold mb-4">Líneas de Investigación Futura</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {[
+            { title: 'Estudio longitudinal', desc: 'Seguimiento a 3–5 años del impacto institucional de las KA122 para capturar el cambio organizativo de segundo orden.' },
+            { title: 'Ampliación territorial', desc: 'Extensión del estudio a otras comunidades autónomas para comparar el efecto del contexto socioeconómico en el impacto.' },
+            { title: 'Diseño cuasi-experimental', desc: 'Incorporación de grupos de control (centros comparables sin participación KA122) para establecer relaciones causales.' },
+            { title: 'Marco evaluativo alternativo', desc: 'Desarrollo de indicadores de evaluación del programa coherentes con las competencias clave de 2018, más allá del rendimiento académico formal.' },
+            { title: 'Análisis de la fase de reintegración', desc: 'Estudio específico del proceso de transferencia del aprendizaje individual al colectivo tras la movilidad.' },
+            { title: 'Impacto en alumnado FP', desc: 'Investigación centrada exclusivamente en el impacto sobre el alumnado de FP y su inserción laboral posterior.' },
+          ].map((f) => (
+            <div key={f.title} className="p-4 rounded-xl border border-gray-100 hover:border-[#0071e3]/30 hover:shadow-sm transition-all">
+              <p className="text-sm font-semibold text-[#1d1d1f] mb-1">{f.title}</p>
+              <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Final note */}
+      <div className="bg-gradient-to-br from-[#0071e3] to-[#0058b0] rounded-3xl p-8 text-white">
+        <h3 className="text-xl font-semibold mb-3">Reflexión Final</h3>
+        <p className="text-blue-100 text-sm leading-relaxed max-w-3xl">
+          La convergencia entre la magnitud de la inversión pública en Erasmus+ (26.200 M€ en el ciclo 2021-2027) y la escasez de evidencia científica independiente sobre el impacto de las acciones KA122 en centros de secundaria y FP constituye una paradoja que esta investigación contribuye a reducir. Los resultados obtenidos apuntan a que el programa tiene un potencial transformador real, pero que su materialización plena requiere superar obstáculos administrativos estructurales e invertir en los mecanismos de transferencia post-movilidad que convierten el aprendizaje individual en capital colectivo del centro.
+        </p>
+      </div>
+    </div>
+  )
+}
