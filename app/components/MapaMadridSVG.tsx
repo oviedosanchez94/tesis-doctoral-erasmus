@@ -12,9 +12,24 @@ const PARTICIPANTES = new Set([
 
 type Feature = { name: string; participante: boolean; d: string }
 
+// Compute bounding-box centroid from a path's d attribute
+function centroid(d: string): [number, number] {
+  const nums = d.match(/[-\d.]+,[-\d.]+/g) || []
+  let mnX = 9999, mxX = -9999, mnY = 9999, mxY = -9999
+  nums.forEach(n => {
+    const [x, y] = n.split(',').map(Number)
+    if (x < mnX) mnX = x; if (x > mxX) mxX = x
+    if (y < mnY) mnY = y; if (y > mxY) mxY = y
+  })
+  return [(mnX + mxX) / 2, (mnY + mxY) / 2]
+}
+
 export default function MapaMadridSVG() {
   const [tooltip, setTooltip] = useState<{ name: string; mx: number; my: number } | null>(null)
   const { width, height, features } = mapData as { width: number; height: number; features: Feature[] }
+
+  // Render non-participants first, participants last (so they appear on top)
+  const sorted = [...features].sort((a, b) => (a.participante ? 1 : 0) - (b.participante ? 1 : 0))
 
   return (
     <div className="relative w-full select-none" style={{ aspectRatio: `${width}/${height}` }}>
@@ -23,44 +38,35 @@ export default function MapaMadridSVG() {
         style={{ width: '100%', height: '100%', display: 'block' }}
         onMouseLeave={() => setTooltip(null)}
       >
-        {features.map((f) => (
-          <path
-            key={f.name}
-            d={f.d}
-            fill={f.participante ? '#0071e3' : '#ffffff'}
-            stroke="#d1d5db"
-            strokeWidth={0.5}
-            style={{ cursor: f.participante ? 'pointer' : 'default' }}
-            onMouseEnter={(e) => {
-              const rect = (e.currentTarget as SVGPathElement).ownerSVGElement!.getBoundingClientRect()
-              const mx = ((e.clientX - rect.left) / rect.width) * width
-              const my = ((e.clientY - rect.top) / rect.height) * height
-              setTooltip({ name: f.name, mx, my })
-            }}
-            onMouseMove={(e) => {
-              const rect = (e.currentTarget as SVGPathElement).ownerSVGElement!.getBoundingClientRect()
-              const mx = ((e.clientX - rect.left) / rect.width) * width
-              const my = ((e.clientY - rect.top) / rect.height) * height
-              setTooltip({ name: f.name, mx, my })
-            }}
-            onMouseLeave={() => setTooltip(null)}
-          >
-            <title>{f.name}</title>
-          </path>
-        ))}
+        {sorted.map((f) => {
+          const [cx, cy] = centroid(f.d)
+          return (
+            <path
+              key={f.name}
+              d={f.d}
+              fill={f.participante ? '#0071e3' : '#ffffff'}
+              stroke="#d1d5db"
+              strokeWidth={0.5}
+              style={{ cursor: f.participante ? 'pointer' : 'default' }}
+              onMouseEnter={() => setTooltip({ name: f.name, mx: cx, my: cy })}
+              onMouseLeave={() => setTooltip(null)}
+            >
+              <title>{f.name}</title>
+            </path>
+          )
+        })}
 
-        {/* Tooltip */}
-        {tooltip && (() => {
-          const isP = PARTICIPANTES.has(tooltip.name)
+        {/* Tooltip at municipality centroid */}
+        {tooltip && PARTICIPANTES.has(tooltip.name) && (() => {
           const rectW = tooltip.name.length * 7 + 20
           const rectH = 24
-          const tx = Math.min(tooltip.mx + 10, width - rectW - 4)
-          const ty = Math.max(tooltip.my - rectH - 8, 4)
+          const tx = Math.min(Math.max(tooltip.mx - rectW / 2, 4), width - rectW - 4)
+          const ty = Math.max(tooltip.my - rectH - 10, 4)
           return (
             <g pointerEvents="none">
               <rect x={tx} y={ty} width={rectW} height={rectH} rx={5} fill="#1d1d1f" opacity={0.88} />
               <text x={tx + rectW / 2} y={ty + 16} textAnchor="middle" fill="white" fontSize={11} fontFamily="-apple-system,sans-serif">
-                {tooltip.name}{isP ? ' ●' : ''}
+                {tooltip.name}
               </text>
             </g>
           )
