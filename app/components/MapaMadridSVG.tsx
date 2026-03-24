@@ -1,8 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
-
-const GEO_URL = '/madrid-municipios.json'
+import mapData from '../data-map.json'
 
 const PARTICIPANTES = new Set([
   'Leganés',
@@ -12,97 +10,80 @@ const PARTICIPANTES = new Set([
   'San Martín de Valdeiglesias',
 ])
 
+type Feature = { name: string; participante: boolean; d: string }
+
 export default function MapaMadridSVG() {
-  const [tooltip, setTooltip] = useState<{ name: string; x: number; y: number } | null>(null)
+  const [tooltip, setTooltip] = useState<{ name: string; mx: number; my: number } | null>(null)
+  const { width, height, features } = mapData as { width: number; height: number; features: Feature[] }
 
   return (
-    <div
-      data-map-container
-      className="relative w-full"
-      style={{ height: 380 }}
-      onMouseLeave={() => setTooltip(null)}
-    >
-      <ComposableMap
-        projection="geoMercator"
-        projectionConfig={{ center: [-3.816, 40.525], scale: 8500 }}
-        style={{ width: '100%', height: '100%' }}
+    <div className="relative w-full select-none" style={{ aspectRatio: `${width}/${height}` }}>
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        style={{ width: '100%', height: '100%', display: 'block', background: '#eef4fc', borderRadius: 12 }}
+        onMouseLeave={() => setTooltip(null)}
       >
-        <Geographies geography={GEO_URL}>
-          {({ geographies }) =>
-            geographies.map((geo) => {
-              const name = geo.properties.name as string
-              const isParticipante = PARTICIPANTES.has(name)
-              return (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  onMouseEnter={(e) => {
-                    const rect = (e.currentTarget as SVGElement)
-                      .closest('.rsm-svg')
-                      ?.getBoundingClientRect()
-                    const parentRect = (e.currentTarget as SVGElement)
-                      .closest('[data-map-container]')
-                      ?.getBoundingClientRect()
-                    const x = e.clientX - (parentRect?.left ?? 0)
-                    const y = e.clientY - (parentRect?.top ?? 0)
-                    setTooltip({ name, x, y })
-                  }}
-                  onMouseMove={(e) => {
-                    const parentRect = (e.currentTarget as SVGElement)
-                      .closest('[data-map-container]')
-                      ?.getBoundingClientRect()
-                    const x = e.clientX - (parentRect?.left ?? 0)
-                    const y = e.clientY - (parentRect?.top ?? 0)
-                    setTooltip({ name, x, y })
-                  }}
-                  onMouseLeave={() => setTooltip(null)}
-                  style={{
-                    default: {
-                      fill: isParticipante ? '#0071e3' : '#e8f0fb',
-                      stroke: '#ffffff',
-                      strokeWidth: 0.4,
-                      outline: 'none',
-                    },
-                    hover: {
-                      fill: isParticipante ? '#0058b0' : '#c7d9f0',
-                      stroke: '#ffffff',
-                      strokeWidth: 0.4,
-                      outline: 'none',
-                      cursor: 'pointer',
-                    },
-                    pressed: { outline: 'none' },
-                  }}
-                />
-              )
-            })
-          }
-        </Geographies>
-      </ComposableMap>
+        {features.map((f) => (
+          <path
+            key={f.name}
+            d={f.d}
+            fill={f.participante ? '#0071e3' : '#9ec5e0'}
+            stroke="#eef4fc"
+            strokeWidth={0.7}
+            style={{ cursor: f.participante ? 'pointer' : 'default', transition: 'fill 0.15s' }}
+            onMouseEnter={(e) => {
+              const rect = (e.currentTarget as SVGPathElement).ownerSVGElement!.getBoundingClientRect()
+              const svgW = rect.width
+              const svgH = rect.height
+              const mx = ((e.clientX - rect.left) / svgW) * width
+              const my = ((e.clientY - rect.top) / svgH) * height
+              setTooltip({ name: f.name, mx, my })
+            }}
+            onMouseMove={(e) => {
+              const rect = (e.currentTarget as SVGPathElement).ownerSVGElement!.getBoundingClientRect()
+              const svgW = rect.width
+              const svgH = rect.height
+              const mx = ((e.clientX - rect.left) / svgW) * width
+              const my = ((e.clientY - rect.top) / svgH) * height
+              setTooltip({ name: f.name, mx, my })
+            }}
+            onMouseLeave={() => setTooltip(null)}
+          >
+            <title>{f.name}</title>
+          </path>
+        ))}
 
-      {/* Tooltip */}
-      {tooltip && (
-        <div
-          className="absolute z-50 bg-[#1d1d1f] text-white text-xs font-medium px-2.5 py-1.5 rounded-lg pointer-events-none shadow-lg"
-          style={{ left: tooltip.x + 12, top: tooltip.y - 30 }}
-        >
-          {tooltip.name}
-          {PARTICIPANTES.has(tooltip.name) && (
-            <span className="ml-1.5 text-[#a8d4f5]">● Participante</span>
-          )}
-        </div>
-      )}
+        {/* Tooltip rendered inside SVG */}
+        {tooltip && (() => {
+          const label = PARTICIPANTES.has(tooltip.name)
+            ? `${tooltip.name}  ●`
+            : tooltip.name
+          const rectW = label.length * 7.2 + 20
+          const rectH = 26
+          const tx = Math.min(tooltip.mx + 10, width - rectW - 4)
+          const ty = Math.max(tooltip.my - rectH - 8, 4)
+          return (
+            <g pointerEvents="none">
+              <rect x={tx} y={ty} width={rectW} height={rectH} rx={6} fill="#1d1d1f" opacity={0.9} />
+              <text x={tx + rectW / 2} y={ty + 17} textAnchor="middle" fill="white" fontSize={11} fontFamily="-apple-system,sans-serif">
+                {tooltip.name}
+                {PARTICIPANTES.has(tooltip.name) && (
+                  <tspan fill="#5ac8fa"> ●</tspan>
+                )}
+              </text>
+            </g>
+          )
+        })()}
 
-      {/* Legend */}
-      <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 shadow-sm border border-gray-100 flex flex-col gap-1.5">
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-sm flex-shrink-0" style={{ background: '#0071e3' }} />
-          <span className="text-xs text-gray-700">Municipio participante (5)</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-sm flex-shrink-0 border border-gray-200" style={{ background: '#e8f0fb' }} />
-          <span className="text-xs text-gray-500">Resto de municipios</span>
-        </div>
-      </div>
+        {/* Legend */}
+        <g transform={`translate(10, ${height - 52})`}>
+          <rect width={170} height={48} rx={8} fill="white" fillOpacity={0.92} />
+          <rect x={10} y={10} width={12} height={12} rx={2} fill="#0071e3" />
+          <text x={28} y={21} fontSize={11} fill="#1d1d1f" fontFamily="-apple-system,sans-serif">Municipio participante (5)</text>
+          <rect x={10} y={28} width={12} height={12} rx={2} fill="#9ec5e0" stroke="#7aa8c8" strokeWidth={0.5} />
+          <text x={28} y={39} fontSize={11} fill="#6e6e73" fontFamily="-apple-system,sans-serif">Resto de municipios</text>
+        </g>
+      </svg>
     </div>
   )
 }

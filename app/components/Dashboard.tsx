@@ -1,13 +1,11 @@
 'use client'
 import { useState } from 'react'
 import { demographics, impactResults, projectContext } from '../data'
-import dynamic from 'next/dynamic'
+import MapaMadridSVG from './MapaMadridSVG'
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell,
 } from 'recharts'
-
-const MapaMadridSVG = dynamic(() => import('./MapaMadridSVG'), { ssr: false })
 
 const COLORS = ['#0071e3', '#0a4fa6', '#2d86c9', '#5ac8fa', '#a8d4f5', '#c7e0f9']
 
