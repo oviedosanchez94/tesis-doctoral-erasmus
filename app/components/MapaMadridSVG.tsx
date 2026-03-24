@@ -20,31 +20,27 @@ export default function MapaMadridSVG() {
     <div className="relative w-full select-none" style={{ aspectRatio: `${width}/${height}` }}>
       <svg
         viewBox={`0 0 ${width} ${height}`}
-        style={{ width: '100%', height: '100%', display: 'block', background: '#eef4fc', borderRadius: 12 }}
+        style={{ width: '100%', height: '100%', display: 'block' }}
         onMouseLeave={() => setTooltip(null)}
       >
         {features.map((f) => (
           <path
             key={f.name}
             d={f.d}
-            fill={f.participante ? '#0071e3' : '#9ec5e0'}
-            stroke="#eef4fc"
-            strokeWidth={0.7}
-            style={{ cursor: f.participante ? 'pointer' : 'default', transition: 'fill 0.15s' }}
+            fill={f.participante ? '#0071e3' : '#ffffff'}
+            stroke="#d1d5db"
+            strokeWidth={0.5}
+            style={{ cursor: f.participante ? 'pointer' : 'default' }}
             onMouseEnter={(e) => {
               const rect = (e.currentTarget as SVGPathElement).ownerSVGElement!.getBoundingClientRect()
-              const svgW = rect.width
-              const svgH = rect.height
-              const mx = ((e.clientX - rect.left) / svgW) * width
-              const my = ((e.clientY - rect.top) / svgH) * height
+              const mx = ((e.clientX - rect.left) / rect.width) * width
+              const my = ((e.clientY - rect.top) / rect.height) * height
               setTooltip({ name: f.name, mx, my })
             }}
             onMouseMove={(e) => {
               const rect = (e.currentTarget as SVGPathElement).ownerSVGElement!.getBoundingClientRect()
-              const svgW = rect.width
-              const svgH = rect.height
-              const mx = ((e.clientX - rect.left) / svgW) * width
-              const my = ((e.clientY - rect.top) / svgH) * height
+              const mx = ((e.clientX - rect.left) / rect.width) * width
+              const my = ((e.clientY - rect.top) / rect.height) * height
               setTooltip({ name: f.name, mx, my })
             }}
             onMouseLeave={() => setTooltip(null)}
@@ -53,35 +49,30 @@ export default function MapaMadridSVG() {
           </path>
         ))}
 
-        {/* Tooltip rendered inside SVG */}
+        {/* Tooltip */}
         {tooltip && (() => {
-          const label = PARTICIPANTES.has(tooltip.name)
-            ? `${tooltip.name}  ●`
-            : tooltip.name
-          const rectW = label.length * 7.2 + 20
-          const rectH = 26
+          const isP = PARTICIPANTES.has(tooltip.name)
+          const rectW = tooltip.name.length * 7 + 20
+          const rectH = 24
           const tx = Math.min(tooltip.mx + 10, width - rectW - 4)
           const ty = Math.max(tooltip.my - rectH - 8, 4)
           return (
             <g pointerEvents="none">
-              <rect x={tx} y={ty} width={rectW} height={rectH} rx={6} fill="#1d1d1f" opacity={0.9} />
-              <text x={tx + rectW / 2} y={ty + 17} textAnchor="middle" fill="white" fontSize={11} fontFamily="-apple-system,sans-serif">
-                {tooltip.name}
-                {PARTICIPANTES.has(tooltip.name) && (
-                  <tspan fill="#5ac8fa"> ●</tspan>
-                )}
+              <rect x={tx} y={ty} width={rectW} height={rectH} rx={5} fill="#1d1d1f" opacity={0.88} />
+              <text x={tx + rectW / 2} y={ty + 16} textAnchor="middle" fill="white" fontSize={11} fontFamily="-apple-system,sans-serif">
+                {tooltip.name}{isP ? ' ●' : ''}
               </text>
             </g>
           )
         })()}
 
         {/* Legend */}
-        <g transform={`translate(10, ${height - 52})`}>
-          <rect width={170} height={48} rx={8} fill="white" fillOpacity={0.92} />
-          <rect x={10} y={10} width={12} height={12} rx={2} fill="#0071e3" />
-          <text x={28} y={21} fontSize={11} fill="#1d1d1f" fontFamily="-apple-system,sans-serif">Municipio participante (5)</text>
-          <rect x={10} y={28} width={12} height={12} rx={2} fill="#9ec5e0" stroke="#7aa8c8" strokeWidth={0.5} />
-          <text x={28} y={39} fontSize={11} fill="#6e6e73" fontFamily="-apple-system,sans-serif">Resto de municipios</text>
+        <g transform={`translate(10, ${height - 46})`}>
+          <rect width={162} height={42} rx={7} fill="white" fillOpacity={0.95} stroke="#e5e7eb" strokeWidth={0.5} />
+          <rect x={10} y={9} width={11} height={11} rx={2} fill="#0071e3" />
+          <text x={27} y={20} fontSize={10.5} fill="#1d1d1f" fontFamily="-apple-system,sans-serif">Municipio participante (5)</text>
+          <rect x={10} y={26} width={11} height={11} rx={2} fill="white" stroke="#d1d5db" strokeWidth={0.8} />
+          <text x={27} y={37} fontSize={10.5} fill="#6e6e73" fontFamily="-apple-system,sans-serif">Resto de municipios</text>
         </g>
       </svg>
     </div>
