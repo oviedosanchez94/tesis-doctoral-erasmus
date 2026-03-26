@@ -45,6 +45,7 @@ export default function MapaMadridSVG() {
               key={f.name}
               d={f.d}
               fill={f.participante ? '#0071e3' : '#ffffff'}
+              fillRule="evenodd"
               stroke="#d1d5db"
               strokeWidth={0.5}
               style={{ cursor: f.participante ? 'pointer' : 'default' }}

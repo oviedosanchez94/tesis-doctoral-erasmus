@@ -11,8 +11,8 @@ const COLORS = ['#0071e3', '#0a4fa6', '#2d86c9', '#5ac8fa', '#a8d4f5', '#c7e0f9'
 
 function MetricCard({ value, label, sub }: { value: string; label: string; sub?: string }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col">
-      <span className="text-4xl font-semibold tracking-tight text-[#1d1d1f]">{value}</span>
+    <div className="bg-white rounded-2xl border border-gray-100 p-4 md:p-6 flex flex-col">
+      <span className="text-3xl md:text-4xl font-semibold tracking-tight text-[#1d1d1f]">{value}</span>
       <span className="text-sm font-medium text-[#1d1d1f] mt-2">{label}</span>
       {sub && <span className="text-xs text-gray-400 mt-1">{sub}</span>}
     </div>
@@ -64,11 +64,11 @@ export default function Dashboard() {
   return (
     <div className="space-y-8 fade-in">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#0071e3] to-[#0058b0] rounded-3xl p-8 text-white">
+      <div className="bg-gradient-to-br from-[#0071e3] to-[#0058b0] rounded-3xl p-5 md:p-8 text-white">
         <div className="flex items-start justify-between flex-wrap gap-4">
           <div className="max-w-2xl">
             <span className="text-[#99c8ff] text-sm font-medium uppercase tracking-widest">Tesis Doctoral</span>
-            <h1 className="text-2xl font-semibold mt-2 leading-snug">
+            <h1 className="text-lg md:text-2xl font-semibold mt-2 leading-snug">
               Impacto de las Acciones Erasmus+ KA122 en los Centros de Educación Secundaria del Sur de la Comunidad de Madrid
             </h1>
             <p className="text-blue-100 mt-2 text-sm leading-relaxed">
@@ -168,7 +168,7 @@ export default function Dashboard() {
             <BarChart data={especialidades} layout="vertical" margin={{ left: 10, right: 30 }}>
               <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f0f0f0" />
               <XAxis type="number" tick={{ fontSize: 11, fill: '#6e6e73' }} tickLine={false} axisLine={false} allowDecimals={false} />
-              <YAxis type="category" dataKey="name" tick={{ fontSize: 11, fill: '#1d1d1f' }} tickLine={false} axisLine={false} width={140} />
+              <YAxis type="category" dataKey="name" tick={{ fontSize: 10, fill: '#1d1d1f' }} tickLine={false} axisLine={false} width={110} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e5e7eb', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }} formatter={(v: number) => [v, 'Docentes']} />
               <Bar dataKey="value" radius={[0, 6, 6, 0]}>
                 {especialidades.map((_, i) => <Cell key={i} fill={i === 0 ? '#0071e3' : '#c7e0f9'} />)}
@@ -185,7 +185,8 @@ export default function Dashboard() {
           <h3 className="text-base font-semibold text-[#1d1d1f] mb-1">Temática de los Proyectos</h3>
           <p className="text-xs text-gray-400 mb-4">Distribución por prioridades Erasmus+ 2021-2027</p>
           <div className="flex items-center gap-4">
-            <ResponsiveContainer width={160} height={160}>
+            <div className="w-32 md:w-40 flex-shrink-0">
+            <ResponsiveContainer width="100%" height={140}>
               <PieChart>
                 <Pie
                   data={projectContext.tematica}
@@ -202,6 +203,7 @@ export default function Dashboard() {
                 <Tooltip formatter={(v: number) => [v, 'Proyectos']} />
               </PieChart>
             </ResponsiveContainer>
+            </div>
             <div className="flex-1 space-y-2">
               {projectContext.tematica.map((t) => (
                 <div key={t.name} className="flex items-center gap-2">
