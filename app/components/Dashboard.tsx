@@ -200,7 +200,18 @@ export default function Dashboard() {
                     <Cell key={i} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(v: number) => [v, 'Proyectos']} />
+                <Tooltip
+                  content={({ active, payload }) => {
+                    if (!active || !payload?.length) return null
+                    const d = payload[0].payload
+                    return (
+                      <div className="bg-white border border-gray-100 rounded-xl shadow-md px-3 py-2">
+                        <p className="text-xs font-semibold text-[#1d1d1f]">{d.name}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">{d.value} {d.value === 1 ? 'persona' : 'personas'}</p>
+                      </div>
+                    )
+                  }}
+                />
               </PieChart>
             </ResponsiveContainer>
             </div>
