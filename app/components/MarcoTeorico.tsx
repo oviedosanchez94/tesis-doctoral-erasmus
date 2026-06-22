@@ -38,15 +38,42 @@ const ka122modalidades = [
   { tipo: 'Prácticas FP', dur: 'Variable', desc: 'Estancias de prácticas para estudiantes de Formación Profesional en contextos laborales reales de otros países europeos.' },
 ]
 
-const cap2teorias = [
-  { autor: 'Guskey (2002)', idea: 'Inversión de la secuencia causal habitual', desc: 'Las creencias del docente no preceden el cambio en la práctica: son los resultados positivos observados en el aula los que consolidan el cambio en las creencias, no al revés.' },
-  { autor: 'Clarke y Hollingsworth (2002)', idea: 'Modelo interconectado de crecimiento profesional (4 dominios)', desc: 'Personal (creencias/actitudes), práctica (experimentación en el aula), consecuencias (resultados en el alumnado) y externo (estímulos del entorno). La movilidad opera sobre todo en el dominio externo; sin el "ciclo de mediación" entre dominios, no se traduce en cambio pedagógico.' },
-  { autor: 'Mezirow (1997)', idea: 'Aprendizaje transformativo y "experiencias desorientadoras"', desc: 'El aprendizaje adulto significativo exige revisar los marcos de referencia propios. La movilidad puede actuar como experiencia desorientadora, pero solo si hay un proceso reflexivo sostenido antes, durante y después.' },
-  { autor: 'Byram y Feng (2004)', idea: 'Competencia intercultural (5 componentes)', desc: 'Conocimiento de la propia cultura y la ajena, habilidades de interpretación, habilidades de interacción, actitud de apertura y —el componente distintivo— evaluación crítica de las propias perspectivas culturales.' },
-  { autor: 'Dervin (2009)', idea: '"Interculturalidad líquida"', desc: 'Crítica a la competencia intercultural superficial: adquirir estereotipos positivos sobre otra cultura sin una revisión crítica genuina de los propios marcos de referencia. Riesgo específico de la movilidad corta.' },
-  { autor: 'Hudzik (2011)', idea: 'Internacionalización integral (educación superior)', desc: 'Compromiso, confirmado mediante la acción, de infundir perspectivas internacionales en toda la vida institucional, no solo en actividades discretas.' },
-  { autor: 'Cattaruzzo y Corò (2023)', idea: 'Internacionalización escolar: 3 dimensiones', desc: 'Curricular (integración en el currículo), relacional (redes de colaboración) y cultural (apertura institucional a la diversidad). Un centro puede tener una dimensión desarrollada sin las otras.' },
-  { autor: 'Doyle et al. (2024)', idea: '"Ciclo de impacto retardado"', desc: 'Los efectos de la movilidad sobre la práctica docente no son visibles de inmediato: se manifiestan con un desfase de entre 6 y 18 meses tras el retorno.' },
+const cap2clusters = [
+  {
+    id: 'cambio',
+    title: 'Cómo cambia el docente',
+    subtitle: 'Secuencia temporal del cambio profesional',
+    color: '#b30033',
+    icon: '◉',
+    nodes: [
+      { autor: 'Guskey', year: '2002', idea: 'La práctica precede a la creencia', desc: 'Las creencias del docente no cambian primero: son los resultados positivos observados en el aula los que consolidan después el cambio de creencias.', rel: null },
+      { autor: 'Clarke y Hollingsworth', year: '2002', idea: '4 dominios interconectados', desc: 'Personal, práctica, consecuencias y externo. Sin el "ciclo de mediación" entre dominios, el estímulo externo (la movilidad) no se traduce en cambio pedagógico.', rel: 'sitúa el mecanismo de Guskey dentro de un ciclo de 4 dominios' },
+      { autor: 'Mezirow', year: '1997', idea: 'Experiencias desorientadoras', desc: 'El aprendizaje adulto significativo exige revisar los propios marcos de referencia. La movilidad puede ser una experiencia desorientadora, pero solo con reflexión sostenida.', rel: 'aporta el disparador: una experiencia que rompe el marco previo' },
+      { autor: 'Doyle et al.', year: '2024', idea: 'Ciclo de impacto retardado', desc: 'Los efectos de la movilidad sobre la práctica docente no son visibles de inmediato: se manifiestan con un desfase de 6 a 18 meses tras el retorno.', rel: 'pone fecha al ciclo: el cambio tarda 6-18 meses en verse' },
+    ],
+  },
+  {
+    id: 'intercultural',
+    title: 'Competencia intercultural: ¿cuánto cala?',
+    subtitle: 'Una definición y su contrapunto crítico',
+    color: '#7a0022',
+    icon: '◈',
+    nodes: [
+      { autor: 'Byram y Feng', year: '2004', idea: '5 componentes de la competencia', desc: 'Conocimiento propio y ajeno, habilidades de interpretación, habilidades de interacción, actitud de apertura y evaluación crítica de las propias perspectivas culturales.', rel: null },
+      { autor: 'Dervin', year: '2009', idea: '"Interculturalidad líquida"', desc: 'Crítica a la competencia intercultural superficial: adquirir estereotipos positivos sobre otra cultura sin revisar de verdad los propios marcos de referencia. Riesgo propio de la movilidad corta.', rel: 'cuestiona si el 5º componente de Byram y Feng se cumple en estancias breves' },
+    ],
+  },
+  {
+    id: 'institucional',
+    title: 'De la persona a la institución',
+    subtitle: 'De la educación superior a la escuela',
+    color: '#d6335c',
+    icon: '◆',
+    nodes: [
+      { autor: 'Hudzik', year: '2011', idea: 'Internacionalización integral', desc: 'Compromiso, confirmado por la acción, de infundir perspectivas internacionales en toda la vida institucional, no solo en actividades discretas. Formulado para educación superior.', rel: null },
+      { autor: 'Cattaruzzo y Corò', year: '2023', idea: '3 dimensiones escolares', desc: 'Curricular, relacional y cultural. Un centro de secundaria puede tener una dimensión desarrollada sin las otras dos.', rel: 'traslada el concepto de Hudzik a secundaria y lo descompone en 3 dimensiones' },
+    ],
+  },
 ]
 
 const cap3modelo = [
@@ -216,17 +243,56 @@ export default function MarcoTeorico() {
         <h2 className="text-lg md:text-xl font-semibold mt-1 mb-1">Movilidad Internacional e Impacto en la Comunidad Educativa</h2>
         <p className="text-sm text-gray-500 mb-6">Desarrollo profesional, competencia intercultural e internacionalización de centros</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {cap2teorias.map((t) => (
-            <div key={t.autor} className="rounded-xl border border-gray-100 p-4">
-              <p className="text-sm font-semibold text-[#b30033] mb-0.5">{t.autor}</p>
-              <p className="text-xs font-medium text-[#1d1d1f] mb-1.5">{t.idea}</p>
-              <p className="text-xs text-gray-500 leading-relaxed">{t.desc}</p>
+        <div className="space-y-6">
+          {cap2clusters.map((cluster) => (
+            <div
+              key={cluster.id}
+              className="rounded-2xl p-4 md:p-5 border"
+              style={{ borderColor: cluster.color + '30', background: cluster.color + '06' }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span
+                  className="w-8 h-8 rounded-xl flex items-center justify-center text-white text-sm flex-shrink-0"
+                  style={{ background: cluster.color }}
+                >
+                  {cluster.icon}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-[#1d1d1f]">{cluster.title}</p>
+                  <p className="text-[11px] text-gray-400">{cluster.subtitle}</p>
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <div className="flex items-stretch gap-0 min-w-fit">
+                  {cluster.nodes.map((n, i) => (
+                    <div key={n.autor} className="flex items-stretch">
+                      {i > 0 && (
+                        <div className="flex flex-col items-center justify-center px-2 md:px-3 w-28 md:w-36 flex-shrink-0">
+                          <span className="text-lg leading-none" style={{ color: cluster.color }}>→</span>
+                          <p className="text-[10px] text-gray-500 text-center leading-snug mt-1">{n.rel}</p>
+                        </div>
+                      )}
+                      <div
+                        className="w-56 md:w-64 flex-shrink-0 rounded-xl bg-white border p-4 shadow-sm"
+                        style={{ borderColor: cluster.color + '35' }}
+                      >
+                        <div className="flex items-baseline gap-1.5 mb-1">
+                          <p className="text-sm font-semibold" style={{ color: cluster.color }}>{n.autor}</p>
+                          <span className="text-[10px] text-gray-400">({n.year})</span>
+                        </div>
+                        <p className="text-xs font-medium text-[#1d1d1f] mb-1.5 leading-snug">{n.idea}</p>
+                        <p className="text-[11px] text-gray-500 leading-relaxed">{n.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+        <div className="mt-6 p-4 rounded-xl bg-gray-50 border border-gray-100">
           <p className="text-xs text-gray-600 leading-relaxed">
             La evidencia disponible documenta una jerarquía de efectos: más fuertes y consistentes en lo actitudinal e individual; más débiles y heterogéneos en las prácticas pedagógicas concretas; más difíciles de documentar en la cultura y la organización de los centros (Souto-Otero et al., 2021).
           </p>
