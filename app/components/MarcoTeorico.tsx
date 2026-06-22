@@ -243,53 +243,66 @@ export default function MarcoTeorico() {
         <h2 className="text-lg md:text-xl font-semibold mt-1 mb-1">Movilidad Internacional e Impacto en la Comunidad Educativa</h2>
         <p className="text-sm text-gray-500 mb-6">Desarrollo profesional, competencia intercultural e internacionalización de centros</p>
 
-        <div className="space-y-6">
-          {cap2clusters.map((cluster) => (
-            <div
-              key={cluster.id}
-              className="rounded-2xl p-4 md:p-5 border"
-              style={{ borderColor: cluster.color + '30', background: cluster.color + '06' }}
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <span
-                  className="w-8 h-8 rounded-xl flex items-center justify-center text-white text-sm flex-shrink-0"
-                  style={{ background: cluster.color }}
-                >
-                  {cluster.icon}
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-[#1d1d1f]">{cluster.title}</p>
-                  <p className="text-[11px] text-gray-400">{cluster.subtitle}</p>
-                </div>
+        <div className="overflow-x-auto pb-2">
+          <div className="min-w-[760px] md:min-w-0">
+            {/* Root */}
+            <div className="flex justify-center">
+              <div className="rounded-2xl bg-[#1d1d1f] text-white px-5 py-3 text-center shadow-sm max-w-xs">
+                <p className="text-sm font-semibold leading-snug">Impacto de la movilidad en la comunidad educativa</p>
+                <p className="text-[10px] text-gray-300 mt-0.5">Capítulo II</p>
               </div>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-px h-6 bg-gray-300" />
+            </div>
+            <div className="w-full h-px bg-gray-300" />
 
-              <div className="overflow-x-auto">
-                <div className="flex items-stretch gap-0 min-w-fit">
+            {/* Branches */}
+            <div className="grid grid-cols-3 gap-4 mt-0">
+              {cap2clusters.map((cluster) => (
+                <div key={cluster.id} className="flex flex-col items-center">
+                  <div className="w-px h-6 bg-gray-300" />
+                  <div
+                    className="rounded-2xl px-3 py-2.5 text-center w-full"
+                    style={{ background: cluster.color + '10', border: `1px solid ${cluster.color}40` }}
+                  >
+                    <span
+                      className="w-6 h-6 rounded-lg flex items-center justify-center text-white text-xs mx-auto mb-1"
+                      style={{ background: cluster.color }}
+                    >
+                      {cluster.icon}
+                    </span>
+                    <p className="text-xs font-semibold text-[#1d1d1f] leading-snug">{cluster.title}</p>
+                    <p className="text-[10px] text-gray-400 mt-0.5">{cluster.subtitle}</p>
+                  </div>
+
+                  {/* Chained author nodes */}
                   {cluster.nodes.map((n, i) => (
-                    <div key={n.autor} className="flex items-stretch">
-                      {i > 0 && (
-                        <div className="flex flex-col items-center justify-center px-2 md:px-3 w-28 md:w-36 flex-shrink-0">
-                          <span className="text-lg leading-none" style={{ color: cluster.color }}>→</span>
-                          <p className="text-[10px] text-gray-500 text-center leading-snug mt-1">{n.rel}</p>
-                        </div>
-                      )}
+                    <div key={n.autor} className="w-full flex flex-col items-center">
+                      <div className="flex flex-col items-center py-0.5">
+                        <div className="w-px h-3" style={{ background: cluster.color + '60' }} />
+                        {n.rel && (
+                          <p className="text-[9px] text-gray-400 text-center leading-tight px-1 max-w-[150px]">{n.rel}</p>
+                        )}
+                        <div className="w-px h-3" style={{ background: cluster.color + '60' }} />
+                      </div>
                       <div
-                        className="w-56 md:w-64 flex-shrink-0 rounded-xl bg-white border p-4 shadow-sm"
+                        className="w-full rounded-xl bg-white border p-3 shadow-sm"
                         style={{ borderColor: cluster.color + '35' }}
                       >
                         <div className="flex items-baseline gap-1.5 mb-1">
-                          <p className="text-sm font-semibold" style={{ color: cluster.color }}>{n.autor}</p>
-                          <span className="text-[10px] text-gray-400">({n.year})</span>
+                          <p className="text-xs font-semibold" style={{ color: cluster.color }}>{n.autor}</p>
+                          <span className="text-[9px] text-gray-400">({n.year})</span>
                         </div>
-                        <p className="text-xs font-medium text-[#1d1d1f] mb-1.5 leading-snug">{n.idea}</p>
-                        <p className="text-[11px] text-gray-500 leading-relaxed">{n.desc}</p>
+                        <p className="text-[11px] font-medium text-[#1d1d1f] mb-1 leading-snug">{n.idea}</p>
+                        <p className="text-[10px] text-gray-500 leading-relaxed">{n.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         <div className="mt-6 p-4 rounded-xl bg-gray-50 border border-gray-100">
