@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { demographics, impactResults, projectContext } from '../data'
 import MapaMadridSVG from './MapaMadridSVG'
+import EuropaMapa from './EuropaMapa'
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell,
@@ -110,6 +111,34 @@ export default function Dashboard() {
           </div>
         </div>
         <MapaMadridSVG />
+      </div>
+
+      {/* Mapa Europa — Países socios */}
+      <div className="bg-white rounded-2xl border border-gray-100 p-6">
+        <div className="flex items-start justify-between mb-5 flex-wrap gap-2">
+          <div>
+            <h3 className="text-base font-semibold text-[#1d1d1f] mb-1">Países Socios — Análisis H2</h3>
+            <p className="text-xs text-gray-400">Intensidad de colaboración por país · más oscuro = más proyectos</p>
+          </div>
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium bg-[#1d1d1f]/5 text-[#1d1d1f] px-2.5 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1d1d1f]" />
+            Sur de Madrid (origen)
+          </span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <div className="md:col-span-2">
+            <EuropaMapa />
+          </div>
+          <div className="space-y-1.5">
+            {projectContext.paises.map((p) => (
+              <div key={p.name} className="flex items-center gap-2">
+                <span className="text-sm">{p.flag}</span>
+                <span className="text-xs text-gray-700 flex-1">{p.name}</span>
+                <span className="text-xs font-semibold text-[#1d1d1f]">{p.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Row: demographics + especialidades */}
