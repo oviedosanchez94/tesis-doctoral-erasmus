@@ -61,14 +61,16 @@ function LikertBar({ data }: { data: typeof impactResults.culturaOrganizativa })
   )
 }
 
-const radarData = [
-  { area: 'Cultura Org.', media: 3.25 },
-  { area: 'Competencias Ling.', media: 3.82 },
-  { area: 'Resultados Acad.', media: 3.33 },
-  { area: 'Motivación', media: 3.22 },
-  { area: 'Trabajo Equipo', media: 2.72 },
-  { area: 'Métodos Docentes', media: 2.24 },
-  { area: 'Satisfacción', media: 3.74 },
+const shortLabel = (s: string) => (s.length > 22 ? s.slice(0, 22) + '…' : s)
+
+const radarAlumnado = impactResults.impactoAlumnado.map((d) => ({
+  area: shortLabel(d.label),
+  media: d.mean,
+}))
+
+const radarDocenteCentro = [
+  ...impactResults.culturaOrganizativa.map((d) => ({ area: shortLabel(d.label), media: d.mean })),
+  ...impactResults.impactoDocente.map((d) => ({ area: shortLabel(d.label), media: d.mean })),
 ]
 
 export default function Resultados() {
@@ -82,22 +84,22 @@ export default function Resultados() {
         </p>
       </div>
 
-      {/* Radar overview */}
+      {/* Radar overview — alumnado */}
       <div className="bg-white rounded-2xl border border-gray-100 p-8">
-        <h2 className="text-lg font-semibold mb-1">Perfil de Impacto Global</h2>
-        <p className="text-xs text-gray-400 mb-6">Media por dimensión evaluada — escala 0 a 4</p>
+        <h2 className="text-lg font-semibold mb-1">Perfil de Impacto en el Alumnado</h2>
+        <p className="text-xs text-gray-400 mb-6">Percepción docente sobre el alumnado movilizado · Bloque C · relativo a H3 — escala 0 a 4</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <ResponsiveContainer width="100%" height={280}>
-            <RadarChart data={radarData}>
+            <RadarChart data={radarAlumnado}>
               <PolarGrid stroke="#e5e7eb" />
-              <PolarAngleAxis dataKey="area" tick={{ fontSize: 11, fill: '#6e6e73' }} />
+              <PolarAngleAxis dataKey="area" tick={{ fontSize: 10, fill: '#6e6e73' }} />
               <PolarRadiusAxis angle={90} domain={[0, 4]} tick={{ fontSize: 9, fill: '#aeaeb2' }} />
               <Radar name="Media" dataKey="media" stroke="#b30033" fill="#b30033" fillOpacity={0.15} strokeWidth={2} />
               <Tooltip formatter={(v: number) => [`${v}/4`, 'Media']} />
             </RadarChart>
           </ResponsiveContainer>
           <div className="space-y-3">
-            {radarData.sort((a, b) => b.media - a.media).map((d) => (
+            {[...radarAlumnado].sort((a, b) => b.media - a.media).map((d) => (
               <div key={d.area}>
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-xs font-medium text-gray-700">{d.area}</span>
@@ -107,6 +109,39 @@ export default function Resultados() {
                   <div
                     className="h-full rounded-full"
                     style={{ width: `${(d.media / 4) * 100}%`, background: d.media >= 3.5 ? '#b30033' : d.media >= 3 ? '#d6335c' : '#e87a93' }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Radar overview — docente y centro */}
+      <div className="bg-white rounded-2xl border border-gray-100 p-8">
+        <h2 className="text-lg font-semibold mb-1">Perfil de Impacto en el Profesorado y el Centro</h2>
+        <p className="text-xs text-gray-400 mb-6">Cultura organizativa (Bloque B) y práctica docente (Bloque D) · relativo a H1 — escala 0 a 4</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <ResponsiveContainer width="100%" height={280}>
+            <RadarChart data={radarDocenteCentro}>
+              <PolarGrid stroke="#e5e7eb" />
+              <PolarAngleAxis dataKey="area" tick={{ fontSize: 10, fill: '#6e6e73' }} />
+              <PolarRadiusAxis angle={90} domain={[0, 4]} tick={{ fontSize: 9, fill: '#aeaeb2' }} />
+              <Radar name="Media" dataKey="media" stroke="#7a0022" fill="#7a0022" fillOpacity={0.15} strokeWidth={2} />
+              <Tooltip formatter={(v: number) => [`${v}/4`, 'Media']} />
+            </RadarChart>
+          </ResponsiveContainer>
+          <div className="space-y-3">
+            {[...radarDocenteCentro].sort((a, b) => b.media - a.media).map((d) => (
+              <div key={d.area}>
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-xs font-medium text-gray-700">{d.area}</span>
+                  <span className="text-xs font-semibold text-[#7a0022]">{d.media}</span>
+                </div>
+                <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${(d.media / 4) * 100}%`, background: d.media >= 3.5 ? '#7a0022' : d.media >= 3 ? '#990029' : '#e87a93' }}
                   />
                 </div>
               </div>
