@@ -11,7 +11,7 @@ const resultadoConfig: Record<string, { bg: string; text: string }> = {
 }
 
 export default function Hipotesis() {
-  const [openId, setOpenId] = useState<string | null>(hypotheses[0]?.id ?? null)
+  const [openId, setOpenId] = useState<string | null>(null)
 
   return (
     <div className="space-y-8 fade-in">
@@ -21,6 +21,25 @@ export default function Hipotesis() {
         <p className="section-subtitle">
           Cuatro hipótesis derivadas del marco teórico y contrastadas empíricamente mediante el cuestionario IRKA122. Forman un sistema interpretativo coherente sobre el impacto de las acciones KA122.
         </p>
+      </div>
+
+      {/* System note */}
+      <div className="bg-white rounded-2xl border border-gray-100 p-6">
+        <h3 className="text-base font-semibold mb-3">Sistema interpretativo de las hipótesis</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="rounded-xl p-4 bg-[#b30033]/5 border border-[#b30033]/10">
+            <p className="text-xs font-semibold text-[#b30033] mb-1">H1 + H4 → Condiciones institucionales</p>
+            <p className="text-xs text-gray-600 leading-relaxed">
+              Determinan la intensidad y durabilidad del impacto: H1 desde la velocidad diferencial del cambio individual vs. organizativo; H4 desde los obstáculos que lo frenan.
+            </p>
+          </div>
+          <div className="rounded-xl p-4 bg-[#30d158]/5 border border-[#30d158]/10">
+            <p className="text-xs font-semibold text-[#1a7a35] mb-1">H2 + H3 → Contenido del impacto</p>
+            <p className="text-xs text-gray-600 leading-relaxed">
+              H2 aborda la dimensión contextual y relacional de los proyectos; H3 se centra en la dimensión competencial del alumnado y su relación con los indicadores de rendimiento convencional.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Overview */}
@@ -108,25 +127,6 @@ export default function Hipotesis() {
           </div>
         )
       })}
-
-      {/* System note */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-base font-semibold mb-3">Sistema interpretativo de las hipótesis</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-xl p-4 bg-[#b30033]/5 border border-[#b30033]/10">
-            <p className="text-xs font-semibold text-[#b30033] mb-1">H1 + H4 → Condiciones institucionales</p>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Determinan la intensidad y durabilidad del impacto: H1 desde la velocidad diferencial del cambio individual vs. organizativo; H4 desde los obstáculos que lo frenan.
-            </p>
-          </div>
-          <div className="rounded-xl p-4 bg-[#30d158]/5 border border-[#30d158]/10">
-            <p className="text-xs font-semibold text-[#1a7a35] mb-1">H2 + H3 → Contenido del impacto</p>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              H2 aborda la dimensión contextual y relacional de los proyectos; H3 se centra en la dimensión competencial del alumnado y su relación con los indicadores de rendimiento convencional.
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
