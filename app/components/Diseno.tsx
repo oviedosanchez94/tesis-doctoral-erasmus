@@ -158,7 +158,7 @@ export default function Diseno() {
               { label: 'Nivel educativo', value: 'Secundaria / FP' },
               { label: 'Acción', value: 'KA122 (2021-2027)' },
               { label: 'Instrumento', value: 'Escala Likert + entrevistas' },
-              { label: 'Período recogida', value: 'Cursos 2022-2024' },
+              { label: 'Período recogida', value: '29 nov. 2024 – 27 ene. 2025' },
             ].map((row) => (
               <div key={row.label} className="flex justify-between items-center py-1.5 border-b border-gray-50 last:border-0">
                 <span className="text-xs text-gray-500">{row.label}</span>
