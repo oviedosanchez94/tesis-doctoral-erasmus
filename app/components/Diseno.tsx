@@ -68,7 +68,7 @@ export default function Diseno() {
           {[
             { color: '#b30033', label: 'Sesgo nivel educativo', sub: 'Literatura dominante centrada en Ed. Superior' },
             { color: '#d6335c', label: 'Sesgo escala individual', sub: 'El participante como unidad, no el centro' },
-            { color: '#7a0022', label: 'Sesgo ciclo programático', sub: 'KA122 sin bibliografía consolidada (2021-)' },
+            { color: '#7a0022', label: 'Sesgo ciclo programático', sub: 'KA122 no existía antes de 2021; sin bibliografía consolidada (2021-2025)' },
           ].map((b) => (
             <div key={b.label} className="rounded-xl p-4 border" style={{ borderColor: b.color + '40', background: b.color + '08' }}>
               <div className="w-3 h-3 rounded-full mb-2" style={{ background: b.color }} />

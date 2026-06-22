@@ -59,7 +59,7 @@ const cap3modelo = [
 const sesgos = [
   { name: 'Sesgo de nivel educativo', desc: 'Los estudios más robustos (Erasmus Impact Study, Souto-Otero et al., 2021) se circunscriben a la educación superior, no extrapolables sin más a secundaria y FP.' },
   { name: 'Sesgo de escala individual', desc: 'La literatura privilegia al participante como unidad de análisis, ignorando el impacto organizativo sobre el centro —objetivo prioritario explícito del Reglamento (UE) 2021/817.' },
-  { name: 'Sesgo de ciclo programático', desc: 'La investigación existente analiza el ciclo 2014-2020 o anterior; las KA122 son una modalidad del ciclo 2021-2027 sin bibliografía académica consolidada todavía.' },
+  { name: 'Sesgo de ciclo programático', desc: 'Las acciones KA122 no existían en el ciclo 2014-2020: son una modalidad creada con el ciclo 2021-2027. La investigación existente se apoya en programas anteriores a su creación, por lo que el tramo realmente transcurrido del ciclo (2021-2025) carece todavía de bibliografía académica consolidada sobre KA122.' },
 ]
 
 const competencias2006 = [
