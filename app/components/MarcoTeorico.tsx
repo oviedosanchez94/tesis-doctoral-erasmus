@@ -14,7 +14,7 @@ const timeline = [
   { year: '2014–2020', label: 'Erasmus+ (Reglamento UE n.º 1288/2013)', desc: 'Unifica los programas sectoriales bajo una sola marca: 14.774 M€, estructurado en KA1 (movilidad), KA2 (cooperación) y KA3 (reforma de políticas). El Erasmus Impact Study (2014, n>75.000, 34 países) documentó efectos positivos en empleabilidad e identidad europea.' },
   { year: '2020', label: 'COVID-19', desc: 'Más del 60% de las movilidades fueron suspendidas o interrumpidas en el punto álgido de la pandemia (ESN, 2020). La respuesta institucional incorporó la movilidad mixta de forma permanente en el ciclo siguiente.' },
   { year: '2021–2027', label: 'Erasmus+ y las acciones KA122', desc: 'Presupuesto de 26.200 M€ (+77%), con cuatro prioridades horizontales: inclusión y diversidad, transformación digital, sostenibilidad ambiental y participación ciudadana activa. Se introduce la Acreditación Erasmus; KA122 es la vía para centros sin acreditación previa.' },
-  { year: '2016–2025', label: 'Brexit y el Turing Scheme', desc: 'El Reino Unido sale de Erasmus+ el 1 de enero de 2021. El Turing Scheme, unilateral y sin reciprocidad, financia la salida pero no genera flujos de entrada. El RU se reincorpora como país asociado a partir de 2024 (acceso pleno desde 2025-2026).' },
+  { year: '2016–2025', label: 'Brexit y el Turing Scheme 🇬🇧', desc: 'El Reino Unido sale de Erasmus+ el 1 de enero de 2021. El Turing Scheme, unilateral y sin reciprocidad, financia la salida pero no genera flujos de entrada. El RU se reincorpora como país asociado a partir de 2024 (acceso pleno desde 2025-2026).' },
 ]
 
 const prioridades2027 = [
@@ -128,23 +128,23 @@ export default function MarcoTeorico() {
         <h2 className="text-lg md:text-xl font-semibold mt-1 mb-1">La Dimensión Educativa del Proyecto Europeo</h2>
         <p className="text-sm text-gray-500 mb-6">De la cooperación intergubernamental a Erasmus+ (1957–2025)</p>
 
-        <div className="relative">
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-gray-100" />
-          <div className="space-y-4">
+        <div className="overflow-x-auto pb-2 -mx-1 px-1">
+          <div className="relative flex items-start" style={{ minWidth: timeline.length * 220 }}>
+            <div className="absolute left-0 right-0 top-4 h-px bg-gray-100" />
             {timeline.map((item, i) => (
-              <div key={i} className="relative flex gap-4 pl-10">
-                <div className="absolute left-2.5 top-2 w-3 h-3 rounded-full bg-[#b30033] border-2 border-white shadow-sm flex-shrink-0" />
+              <div key={i} className="relative flex-shrink-0 px-3" style={{ width: 220 }}>
+                <div className="w-3 h-3 rounded-full bg-[#b30033] border-2 border-white shadow-sm mx-auto" />
                 <div
-                  className="flex-1 cursor-pointer"
+                  className="mt-3 cursor-pointer"
                   onClick={() => setOpenPeriod(openPeriod === i ? null : i)}
                 >
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="inline-block bg-[#b30033]/10 text-[#b30033] text-[11px] font-semibold rounded-lg px-2 py-0.5">{item.year}</span>
-                    <span className="text-sm font-medium text-[#1d1d1f]">{item.label}</span>
-                    <span className="ml-auto text-gray-300 text-xs">{openPeriod === i ? '▲' : '▼'}</span>
+                  <div className="flex flex-col items-center gap-1.5 text-center">
+                    <span className="inline-block bg-[#b30033]/10 text-[#b30033] text-[11px] font-semibold rounded-lg px-2 py-0.5 whitespace-nowrap">{item.year}</span>
+                    <span className="text-sm font-medium text-[#1d1d1f] leading-snug">{item.label}</span>
+                    <span className="text-gray-300 text-xs">{openPeriod === i ? '▲' : '▼'}</span>
                   </div>
                   {openPeriod === i && (
-                    <p className="text-xs text-gray-600 leading-relaxed mt-2 pr-4">{item.desc}</p>
+                    <p className="text-xs text-gray-600 leading-relaxed mt-2">{item.desc}</p>
                   )}
                 </div>
               </div>

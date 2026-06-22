@@ -89,8 +89,8 @@ export default function Sidebar({ active, onNavigate, mobileOpen = false, onMobi
         {/* Footer */}
         {!collapsed && (
           <div className="px-4 py-4 border-t border-gray-100">
-            <p className="text-[11px] text-gray-400 leading-relaxed">
-              Sur de la Comunidad<br />de Madrid · N=18
+            <p className="text-[11px] text-gray-400 leading-relaxed break-all">
+              javier.oviedo1@alu.uclm.es
             </p>
           </div>
         )}

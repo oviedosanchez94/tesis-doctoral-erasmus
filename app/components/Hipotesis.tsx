@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import { hypotheses } from '../data'
 
 const resultadoConfig: Record<string, { bg: string; text: string }> = {
@@ -10,6 +11,8 @@ const resultadoConfig: Record<string, { bg: string; text: string }> = {
 }
 
 export default function Hipotesis() {
+  const [openId, setOpenId] = useState<string | null>(hypotheses[0]?.id ?? null)
+
   return (
     <div className="space-y-8 fade-in">
       <div>
@@ -43,12 +46,16 @@ export default function Hipotesis() {
       {/* Each hypothesis detail */}
       {hypotheses.map((h) => {
         const cfg = resultadoConfig[h.result] || resultadoConfig.CONFIRMADA
+        const isOpen = openId === h.id
         return (
           <div key={h.id} className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
             {/* Header bar */}
             <div className="h-1.5" style={{ background: h.color }} />
             <div className="p-8">
-              <div className="flex items-start gap-4 flex-wrap">
+              <div
+                className="flex items-start gap-4 flex-wrap cursor-pointer"
+                onClick={() => setOpenId(isOpen ? null : h.id)}
+              >
                 <div
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-white text-xl font-bold flex-shrink-0"
                   style={{ background: h.color }}
@@ -67,31 +74,36 @@ export default function Hipotesis() {
                   </div>
                   <p className="text-sm text-gray-600 leading-relaxed">{h.summary}</p>
                 </div>
+                <span className="text-gray-300 text-sm mt-2">{isOpen ? '▲' : '▼'}</span>
               </div>
 
-              {/* Evidence */}
-              <div className="mt-6 p-5 rounded-xl bg-gray-50">
-                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Evidencia empírica</p>
-                <p className="text-sm text-gray-700 leading-relaxed">{h.evidence}</p>
-              </div>
+              {isOpen && (
+                <>
+                  {/* Evidence */}
+                  <div className="mt-6 p-5 rounded-xl bg-gray-50">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Evidencia empírica</p>
+                    <p className="text-sm text-gray-700 leading-relaxed">{h.evidence}</p>
+                  </div>
 
-              {/* Key metric */}
-              <div className="mt-4 flex items-center gap-4">
-                <div className="rounded-xl px-5 py-3 flex-shrink-0" style={{ background: h.color + '12' }}>
-                  <p className="text-2xl font-semibold" style={{ color: h.color }}>{h.keyMetric}</p>
-                  <p className="text-xs mt-0.5" style={{ color: h.color + 'cc' }}>{h.keyMetricLabel}</p>
-                </div>
-                <div className="flex-1">
-                  <ul className="space-y-1.5">
-                    {h.details.map((d, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: h.color }} />
-                        <span className="text-xs text-gray-600 leading-relaxed">{d}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                  {/* Key metric */}
+                  <div className="mt-4 flex items-center gap-4">
+                    <div className="rounded-xl px-5 py-3 flex-shrink-0" style={{ background: h.color + '12' }}>
+                      <p className="text-2xl font-semibold" style={{ color: h.color }}>{h.keyMetric}</p>
+                      <p className="text-xs mt-0.5" style={{ color: h.color + 'cc' }}>{h.keyMetricLabel}</p>
+                    </div>
+                    <div className="flex-1">
+                      <ul className="space-y-1.5">
+                        {h.details.map((d, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: h.color }} />
+                            <span className="text-xs text-gray-600 leading-relaxed">{d}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )

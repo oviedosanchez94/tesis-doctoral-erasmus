@@ -1,10 +1,27 @@
 'use client'
+import { useState } from 'react'
 import { impactResults, demographics, projectContext } from '../data'
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   Cell, Legend, PieChart, Pie,
 } from 'recharts'
+
+function Accordion({ title, subtitle, defaultOpen = false, children }: { title: string; subtitle: string; defaultOpen?: boolean; children: React.ReactNode }) {
+  const [open, setOpen] = useState(defaultOpen)
+  return (
+    <div className="bg-white rounded-2xl border border-gray-100 p-8">
+      <div className="flex items-start justify-between cursor-pointer" onClick={() => setOpen(!open)}>
+        <div>
+          <h2 className="text-lg font-semibold mb-1">{title}</h2>
+          <p className="text-xs text-gray-400">{subtitle}</p>
+        </div>
+        <span className="text-gray-300 text-sm mt-1 flex-shrink-0">{open ? '▲' : '▼'}</span>
+      </div>
+      {open && <div className="mt-6">{children}</div>}
+    </div>
+  )
+}
 
 const SCALE_COLORS: Record<string, string> = {
   nada: '#f4cdd7',
@@ -99,45 +116,37 @@ export default function Resultados() {
       </div>
 
       {/* Cultura organizativa */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-8">
-        <h2 className="text-lg font-semibold mb-1">Bloque B — Cultura Organizativa del Centro</h2>
-        <p className="text-xs text-gray-400 mb-6">Distribución de respuestas Likert · relativo a H1</p>
+      <Accordion title="Bloque B — Cultura Organizativa del Centro" subtitle="Distribución de respuestas Likert · relativo a H1" defaultOpen>
         <LikertBar data={impactResults.culturaOrganizativa} />
         <div className="mt-4 p-4 rounded-xl bg-[#b30033]/5 border border-[#b30033]/10">
           <p className="text-xs text-[#b30033] font-medium">
             Los cambios en la cultura del centro obtienen la media más alta del bloque (3,22/4) y la actitud hacia la internacionalización (3,17) le sigue de cerca: el plano organizativo se mueve de forma homogénea (cambio de primer orden).
           </p>
         </div>
-      </div>
+      </Accordion>
 
       {/* Alumnado */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-8">
-        <h2 className="text-lg font-semibold mb-1">Bloque C — Impacto en el Alumnado</h2>
-        <p className="text-xs text-gray-400 mb-6">Distribución de respuestas Likert · relativo a H3</p>
+      <Accordion title="Bloque C — Impacto en el Alumnado" subtitle="Distribución de respuestas Likert · relativo a H3">
         <LikertBar data={impactResults.impactoAlumnado} />
         <div className="mt-4 p-4 rounded-xl bg-[#b30033]/5 border border-[#b30033]/10">
           <p className="text-xs text-[#8f0028] font-medium">
             Las competencias transversales —aprendizaje intercultural (3,89), motivación (3,53), competencias lingüísticas (3,29)— destacan claramente sobre los resultados académicos convencionales (2,82), confirmando la disociación competencia–rendimiento de H3 (Wilcoxon p &lt; 0,05).
           </p>
         </div>
-      </div>
+      </Accordion>
 
       {/* Docente */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-8">
-        <h2 className="text-lg font-semibold mb-1">Bloque D — Práctica Docente</h2>
-        <p className="text-xs text-gray-400 mb-6">Cambio en métodos de enseñanza · relativo a H1</p>
+      <Accordion title="Bloque D — Práctica Docente" subtitle="Cambio en métodos de enseñanza · relativo a H1">
         <LikertBar data={impactResults.impactoDocente} />
         <div className="mt-4 p-4 rounded-xl bg-[#d6335c]/5 border border-[#d6335c]/20">
           <p className="text-xs text-[#7a0022] font-medium">
             El cambio en los métodos de enseñanza (media 2,59/4; 52,9 % responde «Poco») es el ítem de impacto más bajo: la actitud cambia, pero la práctica pedagógica del aula resiste. La brecha de H1 es interna al plano individual (1.er orden vs. 2.º orden), no entre individuo y centro.
           </p>
         </div>
-      </div>
+      </Accordion>
 
       {/* Gestión */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-8">
-        <h2 className="text-lg font-semibold mb-1">Bloque E — Gestión y Satisfacción</h2>
-        <p className="text-xs text-gray-400 mb-6">Trámites, ayuda institucional y continuidad · relativo a H4</p>
+      <Accordion title="Bloque E — Gestión y Satisfacción" subtitle="Trámites, ayuda institucional y continuidad · relativo a H4">
         <LikertBar data={impactResults.gestionYBarreras} />
 
         {/* Satisfaction summary */}
@@ -155,14 +164,15 @@ export default function Resultados() {
             </div>
           ))}
         </div>
-      </div>
+      </Accordion>
 
       {/* Países */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-8">
-        <h2 className="text-lg font-semibold mb-1">Países Socios — Análisis H2</h2>
-        <p className="text-xs text-gray-400 mb-6">Distribución de colaboraciones por país</p>
+      <Accordion title="Países Socios — Análisis H2" subtitle="Distribución de colaboraciones por país">
         <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={projectContext.paises} margin={{ bottom: 30 }}>
+          <BarChart
+            data={projectContext.paises.map((p) => ({ ...p, name: `${p.flag} ${p.name}` }))}
+            margin={{ bottom: 30 }}
+          >
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
             <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#6e6e73' }} tickLine={false} axisLine={false} angle={-30} textAnchor="end" height={50} />
             <YAxis tick={{ fontSize: 11, fill: '#6e6e73' }} tickLine={false} axisLine={false} />
@@ -177,7 +187,7 @@ export default function Resultados() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-      </div>
+      </Accordion>
     </div>
   )
 }
