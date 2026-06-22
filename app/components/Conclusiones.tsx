@@ -3,30 +3,30 @@
 const conclusiones = [
   {
     n: '1',
-    color: '#0071e3',
-    title: 'Impacto diferencial confirmado (H1)',
-    desc: 'La movilidad KA122 genera transformaciones competenciales inmediatas en el docente individual, pero el cambio organizativo del centro opera a una velocidad significativamente menor, coherente con la distinción teórica entre cambio de primer y segundo orden (Fullan, 2007).',
-    implication: 'Los programas de acompañamiento post-movilidad son clave para transferir el aprendizaje individual al capital colectivo del centro.',
+    color: '#b30033',
+    title: 'La brecha interna del plano individual (H1)',
+    desc: 'La movilidad KA122 produce cambios de primer orden —actitudinales en el docente (3,17) y culturales en el centro (3,22)—, pero no transforma los métodos de enseñanza en el aula (2,59), un cambio de segundo orden. La brecha no se da entre individuo y centro (índices 2,92 vs. 3,14; n.s.), sino dentro del propio plano individual: entre la apertura actitudinal y la práctica pedagógica (Fullan, 2007).',
+    implication: 'Los mecanismos de acompañamiento post-movilidad son clave para que la apertura actitudinal se traduzca en transformación pedagógica sostenida.',
   },
   {
     n: '2',
-    color: '#2d86c9',
+    color: '#d6335c',
     title: 'Patrones geográficos en elección de socios (H2)',
     desc: 'Alemania concentra el 72% de las colaboraciones, reflejando una preferencia por sistemas educativos con alta visibilidad internacional. La temática de Inclusión y Diversidad domina, coherente con los perfiles sociodemográficos de los centros del sur de Madrid.',
     implication: 'Los servicios de apoyo (SEPIE) deberían facilitar el acceso a información sobre sistemas educativos menos conocidos pero potencialmente más pertinentes.',
   },
   {
     n: '3',
-    color: '#5ac8fa',
+    color: '#e87a93',
     title: 'Disociación competencia–rendimiento (H3)',
-    desc: 'Las competencias lingüísticas (3.82/4) y la motivación destacan como efectos robustos de la movilidad, pero no se traducen linealmente en mejoras de los indicadores académicos convencionales, confirmando la limitación estructural de los instrumentos de evaluación vigentes.',
+    desc: 'El aprendizaje intercultural (3,89), la motivación (3,53) y las competencias lingüísticas (3,29) destacan como efectos robustos de la movilidad, frente a los resultados académicos convencionales (2,82). La diferencia es significativa (Wilcoxon p &lt; 0,05) y ninguna competencia correlaciona con el rendimiento, confirmando la limitación estructural de los instrumentos de evaluación vigentes.',
     implication: 'Es necesario desarrollar marcos evaluativos que capturen las competencias transversales desarrolladas por Erasmus+ más allá del rendimiento formal.',
   },
   {
     n: '4',
-    color: '#0a4fa6',
+    color: '#7a0022',
     title: 'Barrera administrativa como obstáculo estructural (H4)',
-    desc: 'El 100% de los participantes repetiría la experiencia, evidenciando que la motivación pedagógica no es el obstáculo. Sin embargo, la complejidad percibida de los trámites KA122 (media 3.88) confirma que la brecha de capacidad administrativa (Flisi et al., 2021) persiste incluso con la simplificación del ciclo 2021-2027.',
+    desc: 'El 100% de los participantes repetiría la experiencia, evidenciando que la motivación pedagógica no es el obstáculo. Sin embargo, los trámites KA122 (media 2,24 de sencillez —el ítem más bajo, 64,7% negativo—) y la ayuda institucional (2,53) confirman que la brecha de capacidad administrativa (Flisi et al., 2021) persiste. La crítica burocrática no erosiona la adhesión (ρ = −0,120): esa es la paradoja central de H4.',
     implication: 'La sostenibilidad del programa depende de reducir la carga burocrática más que de incrementar la motivación del profesorado.',
   },
 ]
@@ -65,7 +65,7 @@ export default function Conclusiones() {
   return (
     <div className="space-y-8 fade-in">
       <div>
-        <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">Capítulo VI</span>
+        <span className="text-xs font-semibold uppercase tracking-widest text-[#b30033]">Capítulo VI</span>
         <h1 className="section-title mt-1">Conclusiones</h1>
         <p className="section-subtitle">
           Síntesis de los resultados, aportaciones originales, limitaciones y líneas de investigación futura.
@@ -104,7 +104,7 @@ export default function Conclusiones() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {aportaciones.map((a) => (
             <div key={a.title} className="flex gap-4 p-4 rounded-xl bg-gray-50">
-              <span className="text-[#0071e3] text-xl flex-shrink-0">{a.icon}</span>
+              <span className="text-[#b30033] text-xl flex-shrink-0">{a.icon}</span>
               <div>
                 <p className="text-sm font-semibold text-[#1d1d1f] mb-1">{a.title}</p>
                 <p className="text-xs text-gray-500 leading-relaxed">{a.desc}</p>
@@ -119,8 +119,8 @@ export default function Conclusiones() {
         <h2 className="text-lg font-semibold mb-4">Limitaciones del Estudio</h2>
         <div className="space-y-3">
           {limitaciones.map((l, i) => (
-            <div key={i} className="flex gap-3 items-start p-3 rounded-xl bg-[#5ac8fa]/10 border border-[#5ac8fa]/20">
-              <span className="w-5 h-5 rounded-full bg-[#5ac8fa]/20 text-[#0071e3] text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">!</span>
+            <div key={i} className="flex gap-3 items-start p-3 rounded-xl bg-[#e87a93]/10 border border-[#e87a93]/20">
+              <span className="w-5 h-5 rounded-full bg-[#e87a93]/20 text-[#b30033] text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">!</span>
               <p className="text-sm text-gray-600 leading-relaxed">{l}</p>
             </div>
           ))}
@@ -139,7 +139,7 @@ export default function Conclusiones() {
             { title: 'Análisis de la fase de reintegración', desc: 'Estudio específico del proceso de transferencia del aprendizaje individual al colectivo tras la movilidad.' },
             { title: 'Impacto en alumnado FP', desc: 'Investigación centrada exclusivamente en el impacto sobre el alumnado de FP y su inserción laboral posterior.' },
           ].map((f) => (
-            <div key={f.title} className="p-4 rounded-xl border border-gray-100 hover:border-[#0071e3]/30 hover:shadow-sm transition-all">
+            <div key={f.title} className="p-4 rounded-xl border border-gray-100 hover:border-[#b30033]/30 hover:shadow-sm transition-all">
               <p className="text-sm font-semibold text-[#1d1d1f] mb-1">{f.title}</p>
               <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
             </div>
@@ -148,7 +148,7 @@ export default function Conclusiones() {
       </div>
 
       {/* Final note */}
-      <div className="bg-gradient-to-br from-[#0071e3] to-[#0058b0] rounded-3xl p-8 text-white">
+      <div className="bg-gradient-to-br from-[#b30033] to-[#8f0028] rounded-3xl p-8 text-white">
         <h3 className="text-xl font-semibold mb-3">Reflexión Final</h3>
         <p className="text-blue-100 text-sm leading-relaxed max-w-3xl">
           La convergencia entre la magnitud de la inversión pública en Erasmus+ (26.200 M€ en el ciclo 2021-2027) y la escasez de evidencia científica independiente sobre el impacto de las acciones KA122 en centros de secundaria y FP constituye una paradoja que esta investigación contribuye a reducir. Los resultados obtenidos apuntan a que el programa tiene un potencial transformador real, pero que su materialización plena requiere superar obstáculos administrativos estructurales e invertir en los mecanismos de transferencia post-movilidad que convierten el aprendizaje individual en capital colectivo del centro.

@@ -44,7 +44,7 @@ export default function MapaMadridSVG() {
             <path
               key={f.name}
               d={f.d}
-              fill={f.participante ? '#0071e3' : '#ffffff'}
+              fill={f.participante ? '#b30033' : '#ffffff'}
               fillRule="evenodd"
               stroke="#d1d5db"
               strokeWidth={0.5}
@@ -76,7 +76,7 @@ export default function MapaMadridSVG() {
         {/* Legend */}
         <g transform={`translate(10, ${height - 46})`}>
           <rect width={162} height={42} rx={7} fill="white" fillOpacity={0.95} stroke="#e5e7eb" strokeWidth={0.5} />
-          <rect x={10} y={9} width={11} height={11} rx={2} fill="#0071e3" />
+          <rect x={10} y={9} width={11} height={11} rx={2} fill="#b30033" />
           <text x={27} y={20} fontSize={10.5} fill="#1d1d1f" fontFamily="-apple-system,sans-serif">Municipio participante (5)</text>
           <rect x={10} y={26} width={11} height={11} rx={2} fill="white" stroke="#d1d5db" strokeWidth={0.8} />
           <text x={27} y={37} fontSize={10.5} fill="#6e6e73" fontFamily="-apple-system,sans-serif">Resto de municipios</text>

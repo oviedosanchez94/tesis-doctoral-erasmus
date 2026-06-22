@@ -1,13 +1,16 @@
-// Thesis data extracted from Excel and DOCX files
-// Doctoral Thesis: Impact of Erasmus+ KA122 actions in secondary/FP centers (South Madrid)
+// Datos de la tesis — verificados contra la fuente primaria "Tabla Limpia Python.xlsx"
+// (hoja Datos_Limpios, n = 18). Medias y distribuciones recalculadas desde las
+// columnas codificadas (cod). Coinciden con el .docx final de la tesis.
+// Tesis doctoral: Impacto de las acciones Erasmus+ KA122 en la comunidad educativa
+// de los centros de secundaria y FP del sur de la Comunidad de Madrid (DAT-Sur).
 
 export const thesisInfo = {
-  title: 'Impacto de las Acciones Erasmus+ KA122 en los Centros de Educación Secundaria del Sur de la Comunidad de Madrid',
+  title: 'Impacto de las Acciones Erasmus+ KA122 en la Comunidad Educativa de los Centros del Sur de la Comunidad de Madrid',
   author: 'Javier Oviedo',
   program: 'Programa Erasmus+ 2021-2027',
   action: 'KA122 — Movilidad de corta duración',
   n: 18,
-  context: 'Sur de la Comunidad de Madrid',
+  context: 'Sur de la Comunidad de Madrid (DAT-Sur)',
 }
 
 // ─── Demographics ────────────────────────────────────────────────────────────
@@ -64,24 +67,26 @@ export const demographics = {
 // ─── Project Context ─────────────────────────────────────────────────────────
 export const projectContext = {
   tematica: [
-    { name: 'Inclusión y diversidad', value: 7, color: '#0071e3' },
-    { name: 'Participación democrática', value: 5, color: '#0a4fa6' },
-    { name: 'Transformación digital', value: 3, color: '#5ac8fa' },
-    { name: 'Medio ambiente', value: 2, color: '#2d86c9' },
-    { name: 'Sin especificar', value: 1, color: '#c7e0f9' },
+    { name: 'Inclusión y diversidad', value: 7, color: '#b30033' },
+    { name: 'Participación democrática', value: 6, color: '#7a0022' },
+    { name: 'Transformación digital', value: 3, color: '#e87a93' },
+    { name: 'Medio ambiente', value: 2, color: '#d6335c' },
   ],
+  // Países socios (suma de menciones; un participante puede trabajar con varios)
   paises: [
     { name: 'Alemania', value: 13 },
+    { name: 'Polonia', value: 9 },
     { name: 'Italia', value: 8 },
-    { name: 'Polonia', value: 7 },
+    { name: 'Suecia', value: 6 },
+    { name: 'Austria', value: 5 },
+    { name: 'Bélgica', value: 4 },
     { name: 'Grecia', value: 4 },
     { name: 'Turquía', value: 4 },
-    { name: 'Austria', value: 4 },
-    { name: 'Suecia', value: 4 },
-    { name: 'Bélgica', value: 4 },
     { name: 'Reino Unido', value: 3 },
     { name: 'Portugal', value: 2 },
     { name: 'Francia', value: 1 },
+    { name: 'Luxemburgo', value: 1 },
+    { name: 'Lituania', value: 1 },
   ],
   brexit: [
     { name: 'No influyó', value: 12 },
@@ -90,13 +95,13 @@ export const projectContext = {
   ],
   covid: [
     { name: 'Sí incidió', value: 9 },
-    { name: 'No incidió', value: 7 },
-    { name: 'No sabe', value: 2 },
+    { name: 'No incidió', value: 8 },
+    { name: 'No sabe', value: 1 },
   ],
   duracion: [
     { name: 'Una semana', value: 10 },
     { name: 'Menos de una semana', value: 6 },
-    { name: 'Más de una semana', value: 2 },
+    { name: 'Más de una semana', value: 1 },
   ],
   comoConocio: [
     { name: 'Centro educativo', value: 14 },
@@ -105,43 +110,50 @@ export const projectContext = {
   ],
 }
 
-// ─── Impact Results (Likert scale: 1=Nada, 2=Poco, 3=Bastante, 4=Mucho) ────
+// ─── Impact Results (escala Likert: 1=Nada, 2=Poco, 3=Bastante, 4=Mucho) ─────
+// En KA122 quien protagoniza la movilidad es el ALUMNADO; el profesorado encuestado
+// acompaña/informa. Los ítems recogen su percepción del impacto.
 export const impactResults = {
-  // H1: Culture vs individual impact
+  // H1 — plano organizativo (centro)
   culturaOrganizativa: [
-    { label: 'Cambios en cultura del centro', mean: 3.11, nada: 0, poco: 1, bastante: 12, mucho: 5 },
-    { label: 'Influencia en objetivos educativos', mean: 3.17, nada: 0, poco: 4, bastante: 10, mucho: 4 },
-    { label: 'Mejora de convivencia', mean: 3.28, nada: 0, poco: 1, bastante: 14, mucho: 3 },
-    { label: 'Cambio actitud hacia internacionalización', mean: 3.44, nada: 0, poco: 2, bastante: 10, mucho: 5 },
+    { label: 'Cambios en cultura del centro', mean: 3.22, nada: 0, poco: 1, bastante: 12, mucho: 5 },
+    { label: 'Influencia en objetivos educativos', mean: 3.06, nada: 0, poco: 3, bastante: 11, mucho: 4 },
+    { label: 'Mejora de convivencia intercultural', mean: 3.06, nada: 0, poco: 2, bastante: 13, mucho: 3 },
+    { label: 'Actitud del profesorado hacia internacionalización', mean: 3.17, nada: 0, poco: 2, bastante: 11, mucho: 5 },
   ],
-  // H3: Student competences vs academic results
+  // H3 — impacto en el alumnado (percepción docente)
   impactoAlumnado: [
-    { label: 'Motivación del alumnado', mean: 3.22, nada: 0, poco: 0, bastante: 7, mucho: 9 },
-    { label: 'Resultados académicos', mean: 3.33, nada: 0, poco: 4, bastante: 12, mucho: 1 },
-    { label: 'Trabajo en equipo y resolución problemas', mean: 2.72, nada: 0, poco: 0, bastante: 13, mucho: 4 },
-    { label: 'Competencias lingüísticas', mean: 3.82, nada: 0, poco: 1, bastante: 10, mucho: 6 },
-    { label: 'Aprendizaje cultural', mean: 2.71, nada: 0, poco: 0, bastante: 7, mucho: 9 },
-    { label: 'Acceso mercado laboral', mean: 2.78, nada: 0, poco: 2, bastante: 9, mucho: 6 },
+    { label: 'Aprendizaje intercultural del alumnado', mean: 3.89, nada: 0, poco: 0, bastante: 2, mucho: 16 },
+    { label: 'Motivación del alumnado', mean: 3.53, nada: 0, poco: 0, bastante: 8, mucho: 9 },
+    { label: 'Competencias lingüísticas', mean: 3.29, nada: 0, poco: 1, bastante: 10, mucho: 6 },
+    { label: 'Trabajo en equipo y resolución de problemas', mean: 3.24, nada: 0, poco: 0, bastante: 13, mucho: 4 },
+    { label: 'Acceso al mercado laboral', mean: 3.24, nada: 0, poco: 2, bastante: 9, mucho: 6 },
+    { label: 'Resultados académicos convencionales', mean: 2.82, nada: 0, poco: 4, bastante: 12, mucho: 1 },
   ],
-  // H1: Teaching methods
+  // H1 — plano individual / práctica del profesorado acompañante
   impactoDocente: [
-    { label: 'Cambio en métodos de enseñanza', mean: 2.24, nada: 0, poco: 9, bastante: 5, mucho: 2 },
-    { label: 'Uso TIC más efectivo', mean: 2.71, nada: 0, poco: 0, bastante: 7, mucho: 9 },
+    { label: 'Cambio en métodos de enseñanza', mean: 2.59, nada: 0, poco: 9, bastante: 6, mucho: 2 },
   ],
-  // H4: Administrative barriers
+  // H4 — gestión y barreras
   gestionYBarreras: [
-    { label: 'Simplicidad trámites KA122', mean: 3.88, nada: 0, poco: 2, bastante: 2, mucho: 13 },
-    { label: 'Ayuda recibida instituciones', mean: 3.47, nada: 1, poco: 4, bastante: 4, mucho: 8 },
-    { label: 'Cooperación entre países', mean: 3.86, nada: 0, poco: 0, bastante: 2, mucho: 14 },
+    { label: 'Sencillez de los trámites KA122', mean: 2.24, nada: 3, poco: 8, bastante: 5, mucho: 1 },
+    { label: 'Ayuda institucional en la solicitud', mean: 2.53, nada: 1, poco: 8, bastante: 6, mucho: 2 },
+    { label: 'Cooperación entre países socios', mean: 3.50, nada: 0, poco: 2, bastante: 5, mucho: 11 },
   ],
-  // Satisfaction
+  // Satisfacción y continuidad
   satisfaccion: {
-    muySatisfactoria: 14,
+    muySatisfactoria: 15,
     satisfactoria: 3,
     pocaSatisfactoria: 0,
     nada: 0,
-    recomendaria: 17,
+    recomendaria: 18, // 0 valoraciones negativas (media 3,78)
     repetiria: 18,
+  },
+  // Ítems dicotómicos (Sí/No) — no Likert
+  dicotomicos: {
+    usoTicEfectivo: { si: 9, no: 8 },
+    eTwinning: { si: 10, no: 8 },
+    eleccionPropia: { si: 18, no: 0 },
   },
 }
 
@@ -149,69 +161,70 @@ export const impactResults = {
 export const hypotheses = [
   {
     id: 'H1',
-    color: '#0071e3',
-    title: 'Impacto diferencial: individuo vs. centro',
-    summary: 'La participación en una acción KA122 genera un impacto más inmediato y perceptible en las prácticas individuales del docente que en la cultura organizativa del centro.',
-    result: 'CONFIRMADA',
-    resultColor: '#0071e3',
-    evidence: 'El cambio en métodos de enseñanza individuales (media 2.24) muestra mayor variabilidad que los cambios en cultura institucional (media 3.11–3.44). Los docentes reportan transformaciones personales inmediatas, mientras que el cambio organizativo requiere horizontes temporales más largos.',
-    keyMetric: '2.24 vs 3.11',
-    keyMetricLabel: 'Cambio docente vs. cultura centro',
+    color: '#7a0022',
+    title: 'Impacto diferencial: práctica individual vs. centro',
+    summary: 'La participación en una acción KA122 genera un impacto más inmediato en las prácticas individuales (del profesorado acompañante) que en la cultura organizativa del centro. La distinción no opone docente y centro, sino que examina a qué ritmo el impacto recorre la cadena hacia el aula y el alumnado.',
+    result: 'NO CONFIRMADA',
+    resultColor: '#7a0022',
+    evidence: 'El índice de impacto individual (M = 2,92) NO supera al organizativo (M = 3,14), y la prueba de Wilcoxon no halla diferencia significativa (W = 12; p = 0,104). El hallazgo relevante es otro: la brecha no se da entre individuo y centro, sino DENTRO del plano individual, entre el cambio actitudinal —que sí se produce (actitud M = 3,17)— y la transformación de los métodos de enseñanza, el ítem más bajo del cuestionario (M = 2,59; 52,9 % responde "Poco"). Cambio de primer orden sí; de segundo orden no.',
+    keyMetric: '2,92 vs 3,14',
+    keyMetricLabel: 'Índice individual vs. organizativo (n.s.)',
     details: [
-      'Cambio métodos enseñanza individuales: media 2.24/4',
-      'Cambio cultura institucional: media 3.11/4',
-      'Cambio actitud internacionalización: media 3.44/4 (el más alto del bloque organizativo)',
+      'Índice individual M = 2,92 vs. organizativo M = 3,14 (Wilcoxon p = 0,104, n.s.)',
+      'Actitud hacia internacionalización M = 3,17 vs. métodos de enseñanza M = 2,59',
+      'Actitud correlaciona con cultura del centro (ρ = 0,553; p = 0,017), pero los métodos no (ρ = 0,247; p = 0,340)',
+      'La brecha real es actitud (1.er orden) vs. práctica pedagógica (2.º orden)',
     ],
   },
   {
     id: 'H2',
-    color: '#2d86c9',
-    title: 'Patrones demográficos en elección de socios',
-    summary: 'La elección de los países socios y la temática responde a patrones demográficos y afinidades culturales específicas del centro.',
+    color: '#d6335c',
+    title: 'Patrones en la elección de socios y temática',
+    summary: 'La elección de los países socios y la temática del proyecto responde a patrones demográficos y afinidades culturales del centro.',
     result: 'CONFIRMADA PARCIALMENTE',
-    resultColor: '#2d86c9',
-    evidence: 'Alemania aparece como socio mayoritario (72% de los centros). La temática dominante es "Inclusión y diversidad" (39%), coherente con los perfiles sociodemográficos de centros del sur de Madrid. El Brexit reorientó flujos de movilidad (22% lo confirma).',
-    keyMetric: '72%',
-    keyMetricLabel: 'Centros con Alemania como socio',
+    resultColor: '#d6335c',
+    evidence: 'Los patrones descriptivos confirman la hipótesis: jerarquía estable de destinos (Alemania 72,2 %, Polonia 50 %, Italia 44,4 %), diferenciación entre centros públicos y concertados, y por perfil profesional (directivos vs. docentes). Sin embargo, ninguna prueba inferencial alcanza significación (Mann-Whitney n.s.), lo que es esperable con N = 18: los indicios son coherentes con la literatura, pero la potencia estadística no permite confirmarlos de forma concluyente.',
+    keyMetric: '72,2 %',
+    keyMetricLabel: 'Participantes con Alemania como socio',
     details: [
-      'Alemania: socio en 13 de 18 proyectos (72%)',
-      'Brexit influyó en 4 de 18 centros (22%)',
-      'Inclusión y diversidad: temática más frecuente (39%)',
-      'Centro educativo: principal canal de conocimiento del programa (78%)',
+      'Núcleo de socios: Alemania 72,2 %, Polonia 50 %, Italia 44,4 %, Suecia 33,3 %',
+      'Centros concertados: red más concentrada (Alemania en el 100 %)',
+      'Diferenciación temática por perfil (directivos vs. docentes)',
+      'Patrones descriptivos sólidos, sin significación inferencial (N = 18)',
     ],
   },
   {
     id: 'H3',
-    color: '#5ac8fa',
+    color: '#e87a93',
     title: 'Competencias transversales vs. rendimiento académico',
-    summary: 'La KA122 produce mejora significativa en competencias transversales del alumnado, pero el desarrollo competencial y el rendimiento académico no evolucionan necesariamente de forma paralela.',
-    result: 'REFUTADA PARCIALMENTE',
-    resultColor: '#0a4fa6',
-    evidence: 'Las competencias lingüísticas presentan la media más alta (3.82) y la motivación es la más valorada (media 3.22). Sin embargo, los resultados académicos convencionales muestran una media inferior (3.33 con alta dispersión), confirmando la disociación entre competencia y rendimiento.',
-    keyMetric: '3.82 vs 3.33',
+    summary: 'La KA122 mejora las competencias transversales del alumnado, pero esa mejora no se traslada a los resultados académicos convencionales: ambas dimensiones no evolucionan en paralelo.',
+    result: 'CONFIRMADA',
+    resultColor: '#8f0028',
+    evidence: 'Las competencias transversales puntúan alto —motivación M = 3,53; competencias lingüísticas M = 3,29; trabajo en equipo M = 3,24— frente a los resultados académicos (M = 2,82). Las tres pruebas de Wilcoxon confirman que la diferencia es significativa (p = 0,003; 0,011; 0,035) y ninguna competencia correlaciona con el rendimiento (todos los p > 0,18). La disociación queda empíricamente establecida.',
+    keyMetric: '3,29 vs 2,82',
     keyMetricLabel: 'Competencias lingüísticas vs. resultados académicos',
     details: [
-      'Competencias lingüísticas: media 3.82/4 (la más alta de todas)',
-      'Motivación alumnado: 9/18 responden "Mucho"',
-      'Resultados académicos: media 3.33 pero con 4 respuestas "Poco"',
-      'Disociación entre competencia transversal y rendimiento formal confirmada',
+      'Competencias transversales: motivación 3,53 · lingüísticas 3,29 · trabajo en equipo 3,24',
+      'Resultados académicos M = 2,82 (el bloque más bajo del alumnado)',
+      'Wilcoxon competencias > rendimiento: p = 0,003 / 0,011 / 0,035',
+      'Único vínculo significativo: motivación ↔ trabajo en equipo (ρ = 0,523; p = 0,031)',
     ],
   },
   {
     id: 'H4',
-    color: '#0a4fa6',
+    color: '#b30033',
     title: 'Barreras administrativas vs. pedagógicas',
-    summary: 'Las principales dificultades percibidas por el profesorado son de naturaleza administrativa e institucional, no pedagógica ni motivacional.',
+    summary: 'Las principales dificultades percibidas son de naturaleza administrativa e institucional, no pedagógica ni motivacional; y esa carga no erosiona la intención de repetir.',
     result: 'CONFIRMADA',
-    resultColor: '#0071e3',
-    evidence: '100% repetiría la experiencia. 17/18 recomendarían el programa. Sin embargo, la simplicidad percibida de los trámites KA122 obtiene la media más alta del bloque (3.88), lo que sugiere que aunque el programa es recomendable, la carga administrativa continúa siendo el principal reto identificado.',
-    keyMetric: '100%',
+    resultColor: '#b30033',
+    evidence: 'Los dos ítems administrativos son los más bajos del cuestionario —sencillez de los trámites M = 2,24 (64,7 % negativo); ayuda institucional M = 2,53—, mientras que motivación y satisfacción puntúan alto. Pese a ello, el 100 % se incorporó por elección propia y repetiría, y la insatisfacción con los trámites no se asocia a menor adhesión (ρ = −0,120; p = 0,670). La paradoja —crítica burocrática + adhesión unánime— es el hallazgo central de H4.',
+    keyMetric: '100 %',
     keyMetricLabel: 'Repetiría la experiencia',
     details: [
-      'Todos los participantes (18/18) repetirían la experiencia',
-      '17/18 recomendarían el programa a otros profesores',
-      'Simplicidad trámites KA122: media 3.88/4 (percepción de complejidad)',
-      'Ayuda institucional recibida: media 3.47 con alta variabilidad',
+      'Sencillez de trámites M = 2,24 — el ítem más bajo (64,7 % en categorías negativas)',
+      'Ayuda institucional M = 2,53 (52,9 % negativo)',
+      '100 % se incorporó por elección propia y repetiría la experiencia',
+      'Trámites ↔ recomendar el programa: ρ = −0,120 (p = 0,670) → independencia',
     ],
   },
 ]

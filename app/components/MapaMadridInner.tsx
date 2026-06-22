@@ -28,9 +28,9 @@ type GeoJsonData = any
 
 function municipioStyle() {
   return {
-    fillColor: '#0071e3',
+    fillColor: '#b30033',
     weight: 2,
-    color: '#005ab5',
+    color: '#8f0028',
     fillOpacity: 0.55,
   }
 }
@@ -63,7 +63,7 @@ export default function MapaMadridInner() {
     return (
       <div className="flex items-center justify-center h-full bg-gray-50 rounded-2xl">
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-[#0071e3] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+          <div className="w-8 h-8 border-2 border-[#b30033] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
           <p className="text-xs text-gray-400">Cargando mapa...</p>
         </div>
       </div>

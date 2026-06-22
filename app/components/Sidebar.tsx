@@ -45,7 +45,7 @@ export default function Sidebar({ active, onNavigate, mobileOpen = false, onMobi
         <div className="flex items-center justify-between px-4 py-5 border-b border-gray-100">
           {!collapsed && (
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">Tesis Doctoral</span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#b30033]">Tesis Doctoral</span>
               <p className="text-[11px] text-gray-400 mt-0.5 leading-tight">Erasmus+ KA122</p>
             </div>
           )}
@@ -72,7 +72,7 @@ export default function Sidebar({ active, onNavigate, mobileOpen = false, onMobi
               onClick={() => handleNavigate(item.id)}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-150 group ${
                 active === item.id
-                  ? 'bg-[#0071e3] text-white shadow-sm'
+                  ? 'bg-[#b30033] text-white shadow-sm'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               }`}
             >

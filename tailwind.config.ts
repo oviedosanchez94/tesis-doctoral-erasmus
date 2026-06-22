@@ -13,7 +13,7 @@ const config: Config = {
       },
       colors: {
         apple: {
-          blue: '#0071e3',
+          blue: '#b30033',
           gray: '#f5f5f7',
           darkgray: '#1d1d1f',
           midgray: '#6e6e73',

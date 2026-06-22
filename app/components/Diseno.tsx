@@ -45,7 +45,7 @@ export default function Diseno() {
   return (
     <div className="space-y-8 fade-in">
       <div>
-        <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">Capítulo IV</span>
+        <span className="text-xs font-semibold uppercase tracking-widest text-[#b30033]">Capítulo IV</span>
         <h1 className="section-title mt-1">Diseño de la Investigación</h1>
         <p className="section-subtitle">
           Planteamiento del problema, preguntas de investigación, hipótesis de trabajo y metodología mixta empleada.
@@ -66,9 +66,9 @@ export default function Diseno() {
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
-            { color: '#0071e3', label: 'Sesgo nivel educativo', sub: 'Literatura dominante centrada en Ed. Superior' },
-            { color: '#2d86c9', label: 'Sesgo escala individual', sub: 'El participante como unidad, no el centro' },
-            { color: '#0a4fa6', label: 'Sesgo ciclo programático', sub: 'KA122 sin bibliografía consolidada (2021-)' },
+            { color: '#b30033', label: 'Sesgo nivel educativo', sub: 'Literatura dominante centrada en Ed. Superior' },
+            { color: '#d6335c', label: 'Sesgo escala individual', sub: 'El participante como unidad, no el centro' },
+            { color: '#7a0022', label: 'Sesgo ciclo programático', sub: 'KA122 sin bibliografía consolidada (2021-)' },
           ].map((b) => (
             <div key={b.label} className="rounded-xl p-4 border" style={{ borderColor: b.color + '40', background: b.color + '08' }}>
               <div className="w-3 h-3 rounded-full mb-2" style={{ background: b.color }} />
@@ -88,14 +88,14 @@ export default function Diseno() {
               key={pq.n}
               className={`rounded-xl p-4 flex gap-4 ${
                 pq.type === 'general'
-                  ? 'bg-[#0071e3]/5 border border-[#0071e3]/20'
+                  ? 'bg-[#b30033]/5 border border-[#b30033]/20'
                   : 'bg-gray-50 border border-gray-100'
               }`}
             >
               <span
                 className={`text-xs font-bold px-2 py-1 rounded-lg flex-shrink-0 h-fit ${
                   pq.type === 'general'
-                    ? 'bg-[#0071e3] text-white'
+                    ? 'bg-[#b30033] text-white'
                     : 'bg-gray-200 text-gray-600'
                 }`}
               >
@@ -113,7 +113,7 @@ export default function Diseno() {
         <div className="space-y-4">
           {metodologia.map((m) => (
             <div key={m.step} className="flex gap-4">
-              <div className="w-8 h-8 rounded-full bg-[#0071e3] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#b30033] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
                 {m.step}
               </div>
               <div className="pt-1">

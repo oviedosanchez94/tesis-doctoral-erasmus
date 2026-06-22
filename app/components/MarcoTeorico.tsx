@@ -38,9 +38,9 @@ const covid = [
 ]
 
 const prioridades2027 = [
-  { icon: '◉', title: 'Inclusión social', color: '#0071e3', desc: 'Reducción de barreras por discapacidad, situación económica o discriminación. Aprendizaje más diverso y equitativo para todos.' },
+  { icon: '◉', title: 'Inclusión social', color: '#b30033', desc: 'Reducción de barreras por discapacidad, situación económica o discriminación. Aprendizaje más diverso y equitativo para todos.' },
   { icon: '◎', title: 'Sostenibilidad ambiental', color: '#34c759', desc: 'Vinculada al Pacto Verde Europeo. Fomento de prácticas sostenibles en proyectos educativos y conciencia climática.' },
-  { icon: '◈', title: 'Digitalización', color: '#5ac8fa', desc: 'Competencias digitales básicas y avanzadas, movilidad mixta, herramientas online y planes de transformación digital en instituciones.' },
+  { icon: '◈', title: 'Digitalización', color: '#e87a93', desc: 'Competencias digitales básicas y avanzadas, movilidad mixta, herramientas online y planes de transformación digital en instituciones.' },
   { icon: '◆', title: 'Participación juvenil', color: '#ff9f0a', desc: 'Implicación activa en la vida democrática. Pensamiento crítico, compromiso cívico y cooperación entre comunidades.' },
 ]
 
@@ -90,7 +90,7 @@ export default function MarcoTeorico() {
     <div className="space-y-8 fade-in">
       {/* Header */}
       <div>
-        <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">Parte I</span>
+        <span className="text-xs font-semibold uppercase tracking-widest text-[#b30033]">Parte I</span>
         <h1 className="section-title mt-1">Marco Teórico</h1>
         <p className="section-subtitle">
           Evolución histórica de los programas educativos europeos, llegada de Erasmus+, acciones KA122 y marco normativo de competencias clave para el aprendizaje permanente.
@@ -124,13 +124,13 @@ export default function MarcoTeorico() {
           <div className="space-y-4">
             {timeline.map((item, i) => (
               <div key={i} className="relative flex gap-4 pl-10">
-                <div className="absolute left-2.5 top-2 w-3 h-3 rounded-full bg-[#0071e3] border-2 border-white shadow-sm flex-shrink-0" />
+                <div className="absolute left-2.5 top-2 w-3 h-3 rounded-full bg-[#b30033] border-2 border-white shadow-sm flex-shrink-0" />
                 <div
                   className="flex-1 cursor-pointer"
                   onClick={() => setOpenPeriod(openPeriod === i ? null : i)}
                 >
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="inline-block bg-[#0071e3]/10 text-[#0071e3] text-[11px] font-semibold rounded-lg px-2 py-0.5">{item.year}</span>
+                    <span className="inline-block bg-[#b30033]/10 text-[#b30033] text-[11px] font-semibold rounded-lg px-2 py-0.5">{item.year}</span>
                     <span className="text-sm font-medium text-[#1d1d1f]">{item.label}</span>
                     <span className="ml-auto text-gray-300 text-xs">{openPeriod === i ? '▲' : '▼'}</span>
                   </div>
@@ -158,7 +158,7 @@ export default function MarcoTeorico() {
             { v: erasmusPlus2014.satisfaccion, l: 'Satisfacción partes' },
           ].map((s) => (
             <div key={s.l} className="bg-gray-50 rounded-xl p-3 text-center">
-              <p className="text-base md:text-lg font-semibold text-[#0071e3]">{s.v}</p>
+              <p className="text-base md:text-lg font-semibold text-[#b30033]">{s.v}</p>
               <p className="text-[11px] text-gray-500 mt-0.5 leading-tight">{s.l}</p>
             </div>
           ))}
@@ -167,7 +167,7 @@ export default function MarcoTeorico() {
         <div className="space-y-2">
           {erasmusPlus2014.puntos.map((p, i) => (
             <div key={i} className="flex items-start gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] mt-1.5 flex-shrink-0" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#b30033] mt-1.5 flex-shrink-0" />
               <p className="text-sm text-gray-700 leading-relaxed">{p}</p>
             </div>
           ))}
@@ -198,7 +198,7 @@ export default function MarcoTeorico() {
               { t: 'Continuidad', d: 'Aprendizaje a distancia y modalidades mixtas para completar estudios' },
             ].map((item) => (
               <div key={item.t} className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] mt-1.5 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#b30033] mt-1.5 flex-shrink-0" />
                 <div>
                   <p className="text-xs font-semibold text-[#1d1d1f]">{item.t}</p>
                   <p className="text-xs text-gray-500 leading-relaxed">{item.d}</p>
@@ -233,7 +233,7 @@ export default function MarcoTeorico() {
             </ul>
           </div>
           <div className="rounded-xl bg-blue-50 border border-blue-100 p-4">
-            <p className="text-sm font-semibold text-[#0071e3] mb-2">Turing Scheme (sustituto británico)</p>
+            <p className="text-sm font-semibold text-[#b30033] mb-2">Turing Scheme (sustituto británico)</p>
             <ul className="space-y-1.5">
               {[
                 'Programa unilateral del RU para financiar movilidad de estudiantes al extranjero',
@@ -242,7 +242,7 @@ export default function MarcoTeorico() {
                 'Modelo comparativo relevante para estudiar el valor añadido del programa europeo',
               ].map((p, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] mt-1.5 flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#b30033] mt-1.5 flex-shrink-0" />
                   <p className="text-xs text-gray-700 leading-relaxed">{p}</p>
                 </li>
               ))}
@@ -275,8 +275,8 @@ export default function MarcoTeorico() {
             { titulo: 'KA2 — Cooperación', desc: 'Asociaciones a pequeña escala. Universidades Europeas y Centros de Excelencia Profesional para transferencia de buenas prácticas.' },
             { titulo: 'KA3 — Reforma de políticas', desc: 'Proyectos que contribuyen a marcos normativos y estrategias educativas nacionales y europeas.' },
           ].map((a) => (
-            <div key={a.titulo} className="rounded-xl bg-[#0071e3]/5 border border-[#0071e3]/15 p-4">
-              <p className="text-sm font-semibold text-[#0071e3] mb-1">{a.titulo}</p>
+            <div key={a.titulo} className="rounded-xl bg-[#b30033]/5 border border-[#b30033]/15 p-4">
+              <p className="text-sm font-semibold text-[#b30033] mb-1">{a.titulo}</p>
               <p className="text-xs text-gray-600 leading-relaxed">{a.desc}</p>
             </div>
           ))}
@@ -291,9 +291,9 @@ export default function MarcoTeorico() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
           {[
-            { code: 'KA122-SCH', label: 'Educación Escolar', color: '#0071e3' },
-            { code: 'KA122-VET', label: 'Formación Profesional', color: '#5ac8fa' },
-            { code: 'KA122-ADU', label: 'Educación de Adultos', color: '#0a4fa6' },
+            { code: 'KA122-SCH', label: 'Educación Escolar', color: '#b30033' },
+            { code: 'KA122-VET', label: 'Formación Profesional', color: '#e87a93' },
+            { code: 'KA122-ADU', label: 'Educación de Adultos', color: '#7a0022' },
           ].map((t) => (
             <div key={t.code} className="rounded-xl p-3 text-center border" style={{ borderColor: t.color + '40', background: t.color + '0a' }}>
               <p className="text-sm font-bold" style={{ color: t.color }}>{t.code}</p>
@@ -304,7 +304,7 @@ export default function MarcoTeorico() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
           {ka122.map((m) => (
-            <div key={m.tipo} className="rounded-xl border border-gray-100 p-4 hover:border-[#0071e3]/30 hover:shadow-sm transition-all">
+            <div key={m.tipo} className="rounded-xl border border-gray-100 p-4 hover:border-[#b30033]/30 hover:shadow-sm transition-all">
               <div className="flex items-start justify-between gap-2 mb-1.5">
                 <p className="text-sm font-semibold text-[#1d1d1f] leading-tight">{m.tipo}</p>
                 <span className="text-[10px] font-medium bg-gray-100 text-gray-500 rounded px-1.5 py-0.5 whitespace-nowrap flex-shrink-0">{m.dur}</span>
@@ -314,14 +314,14 @@ export default function MarcoTeorico() {
           ))}
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0071e3]/5 border border-[#0071e3]/20">
-          <p className="text-sm font-semibold text-[#0071e3] mb-1.5">Propósito fundamental (Guía Erasmus+, 2024)</p>
+        <div className="p-4 rounded-xl bg-[#b30033]/5 border border-[#b30033]/20">
+          <p className="text-sm font-semibold text-[#b30033] mb-1.5">Propósito fundamental (Guía Erasmus+, 2024)</p>
           <p className="text-sm text-gray-700 leading-relaxed">
             «Desarrollar la capacidad de cooperación transnacional de las organizaciones, permitiéndoles explorar la movilidad Erasmus+ con una estructura de gestión y una inversión de recursos inferior a la de los proyectos acreditados de tipo KA121.»
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {['Inclusión y diversidad', 'Transformación digital', 'Sostenibilidad medioambiental', 'Participación ciudadana activa'].map((p) => (
-              <span key={p} className="text-[11px] font-medium bg-[#0071e3]/10 text-[#0071e3] px-2.5 py-1 rounded-full">{p}</span>
+              <span key={p} className="text-[11px] font-medium bg-[#b30033]/10 text-[#b30033] px-2.5 py-1 rounded-full">{p}</span>
             ))}
           </div>
         </div>
@@ -350,8 +350,8 @@ export default function MarcoTeorico() {
               ))}
             </ul>
           </div>
-          <div className="rounded-xl bg-[#0071e3]/5 border border-[#0071e3]/15 p-4">
-            <p className="text-sm font-semibold text-[#0071e3] mb-2">Proyecto DeSeCo · OCDE (1997–2003)</p>
+          <div className="rounded-xl bg-[#b30033]/5 border border-[#b30033]/15 p-4">
+            <p className="text-sm font-semibold text-[#b30033] mb-2">Proyecto DeSeCo · OCDE (1997–2003)</p>
             <ul className="space-y-1.5">
               {[
                 'Definición y Selección de Competencias Clave: primer consenso internacional',
@@ -360,7 +360,7 @@ export default function MarcoTeorico() {
                 'Base conceptual para que la UE adoptara las competencias como marco central de sus políticas educativas',
               ].map((p, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] mt-1.5 flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#b30033] mt-1.5 flex-shrink-0" />
                   <p className="text-xs text-gray-700 leading-relaxed">{p}</p>
                 </li>
               ))}
@@ -386,7 +386,7 @@ export default function MarcoTeorico() {
               key={t.key}
               onClick={() => setTab2018(t.key as '2006' | '2018' | 'cambios')}
               className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${
-                tab2018 === t.key ? 'bg-white text-[#0071e3] shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                tab2018 === t.key ? 'bg-white text-[#b30033] shadow-sm' : 'text-gray-500 hover:text-gray-700'
               }`}
             >
               {t.label}
@@ -400,7 +400,7 @@ export default function MarcoTeorico() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {competencias2006.map((c, i) => (
                 <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-blue-50/50 transition-colors">
-                  <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#0071e3] text-white text-[11px] font-bold flex-shrink-0">{i + 1}</span>
+                  <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#b30033] text-white text-[11px] font-bold flex-shrink-0">{i + 1}</span>
                   <span className="text-sm text-gray-700 leading-snug">{c}</span>
                 </div>
               ))}
@@ -418,13 +418,13 @@ export default function MarcoTeorico() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {competencias2018.map((c, i) => (
                 <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-blue-50/50 transition-colors">
-                  <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#0071e3] text-white text-[11px] font-bold flex-shrink-0">{i + 1}</span>
+                  <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#b30033] text-white text-[11px] font-bold flex-shrink-0">{i + 1}</span>
                   <span className="text-sm text-gray-700 leading-snug">{c}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-4 p-3 rounded-xl bg-[#0071e3]/5 border border-[#0071e3]/20">
-              <p className="text-xs font-medium text-[#0071e3]">Relevancia para las acciones KA122</p>
+            <div className="mt-4 p-3 rounded-xl bg-[#b30033]/5 border border-[#b30033]/20">
+              <p className="text-xs font-medium text-[#b30033]">Relevancia para las acciones KA122</p>
               <p className="text-xs text-gray-600 mt-1 leading-relaxed">El Marco de 2018 es el referente teórico más adecuado para analizar el impacto de KA122 por su énfasis en la dimensión relacional, emocional y ciudadana. Una estancia en el extranjero proporciona exactamente el contexto no formal, experiencial y multicultural que ambos marcos identifican como necesario para el desarrollo de competencias (Krzaklewska y Skórska, 2021).</p>
             </div>
           </div>
@@ -433,14 +433,14 @@ export default function MarcoTeorico() {
         {tab2018 === 'cambios' && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {cambios2018.map((c, i) => (
-              <div key={i} className="rounded-xl border border-gray-100 p-4 hover:border-[#0071e3]/30 hover:shadow-sm transition-all">
-                <div className="w-7 h-7 flex items-center justify-center rounded-full bg-[#0071e3]/10 text-[#0071e3] text-xs font-bold mb-2">{i + 1}</div>
+              <div key={i} className="rounded-xl border border-gray-100 p-4 hover:border-[#b30033]/30 hover:shadow-sm transition-all">
+                <div className="w-7 h-7 flex items-center justify-center rounded-full bg-[#b30033]/10 text-[#b30033] text-xs font-bold mb-2">{i + 1}</div>
                 <h3 className="text-sm font-semibold text-[#1d1d1f] mb-1">{c.titulo}</h3>
                 <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
               </div>
             ))}
-            <div className="sm:col-span-2 mt-1 p-4 rounded-xl bg-[#0a4fa6]/5 border border-[#0a4fa6]/15">
-              <p className="text-sm font-medium text-[#0a4fa6]">Continuidad esencial entre ambos marcos</p>
+            <div className="sm:col-span-2 mt-1 p-4 rounded-xl bg-[#7a0022]/5 border border-[#7a0022]/15">
+              <p className="text-sm font-medium text-[#7a0022]">Continuidad esencial entre ambos marcos</p>
               <p className="text-xs text-gray-600 mt-1 leading-relaxed">Ambos marcos comparten la concepción de que el desarrollo competencial ocurre en contextos formales, no formales e informales, y que la dimensión experiencial es irreductible a la transmisión de contenidos. Esta continuidad fundamenta teóricamente la lógica de las acciones de movilidad internacional KA122.</p>
             </div>
           </div>
@@ -451,7 +451,7 @@ export default function MarcoTeorico() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
           { title: 'Sesgo educativo dominante', value: '84%', sub: 'Estudios robustos circunscritos a la educación superior', color: '#ff9f0a' },
-          { title: 'Investigación KA122', value: 'Incipiente', sub: 'Primera aproximación empírica sistemática al impacto institucional en centros no universitarios', color: '#0071e3' },
+          { title: 'Investigación KA122', value: 'Incipiente', sub: 'Primera aproximación empírica sistemática al impacto institucional en centros no universitarios', color: '#b30033' },
           { title: 'Laguna identificada', value: 'Sur Madrid', sub: 'Ningún estudio previo sobre KA122 en centros de secundaria del sur de la Comunidad de Madrid', color: '#34c759' },
         ].map((s) => (
           <div key={s.title} className="bg-white rounded-2xl border border-gray-100 p-5">

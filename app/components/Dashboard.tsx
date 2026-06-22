@@ -7,7 +7,7 @@ import {
   PieChart, Pie, Cell,
 } from 'recharts'
 
-const COLORS = ['#0071e3', '#0a4fa6', '#2d86c9', '#5ac8fa', '#a8d4f5', '#c7e0f9']
+const COLORS = ['#b30033', '#7a0022', '#d6335c', '#e87a93', '#efbcca', '#f4cdd7']
 
 function MetricCard({ value, label, sub }: { value: string; label: string; sub?: string }) {
   return (
@@ -64,10 +64,10 @@ export default function Dashboard() {
   return (
     <div className="space-y-8 fade-in">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#0071e3] to-[#0058b0] rounded-3xl p-5 md:p-8 text-white">
+      <div className="bg-gradient-to-br from-[#b30033] to-[#8f0028] rounded-3xl p-5 md:p-8 text-white">
         <div className="flex items-start justify-between flex-wrap gap-4">
           <div className="max-w-2xl">
-            <span className="text-[#99c8ff] text-sm font-medium uppercase tracking-widest">Tesis Doctoral</span>
+            <span className="text-[#eaa6b5] text-sm font-medium uppercase tracking-widest">Tesis Doctoral</span>
             <h1 className="text-lg md:text-2xl font-semibold mt-2 leading-snug">
               Impacto de las Acciones Erasmus+ KA122 en los Centros de Educación Secundaria del Sur de la Comunidad de Madrid
             </h1>
@@ -88,8 +88,8 @@ export default function Dashboard() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <MetricCard value="18" label="Participantes en la muestra" sub="Docentes y equipo directivo" />
           <MetricCard value="100%" label="Repetirían la experiencia" sub="18 de 18 participantes" />
-          <MetricCard value="3.82" label="Media competencias lingüísticas" sub="Escala 1–4 Likert" />
-          <MetricCard value="11" label="Países socios distintos" sub="Alemania el más frecuente (72%)" />
+          <MetricCard value="3,89" label="Aprendizaje intercultural del alumnado" sub="Media más alta · escala 1–4 Likert" />
+          <MetricCard value="13" label="Países socios distintos" sub="Alemania el más frecuente (72%)" />
         </div>
       </div>
 
@@ -102,8 +102,8 @@ export default function Dashboard() {
           </div>
           <div className="flex flex-wrap gap-2">
             {['Leganés', 'Alcorcón', 'Parla', 'Aranjuez', 'San Martín de Valdeiglesias'].map((m) => (
-              <span key={m} className="inline-flex items-center gap-1.5 text-xs font-medium bg-[#0071e3]/10 text-[#0071e3] px-2.5 py-1 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3]" />
+              <span key={m} className="inline-flex items-center gap-1.5 text-xs font-medium bg-[#b30033]/10 text-[#b30033] px-2.5 py-1 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#b30033]" />
                 {m}
               </span>
             ))}
@@ -171,7 +171,7 @@ export default function Dashboard() {
               <YAxis type="category" dataKey="name" tick={{ fontSize: 10, fill: '#1d1d1f' }} tickLine={false} axisLine={false} width={110} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e5e7eb', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }} formatter={(v: number) => [v, 'Docentes']} />
               <Bar dataKey="value" radius={[0, 6, 6, 0]}>
-                {especialidades.map((_, i) => <Cell key={i} fill={i === 0 ? '#0071e3' : '#c7e0f9'} />)}
+                {especialidades.map((_, i) => <Cell key={i} fill={i === 0 ? '#b30033' : '#f4cdd7'} />)}
               </Bar>
             </BarChart>
           </ResponsiveContainer>

@@ -2,17 +2,18 @@
 import { hypotheses } from '../data'
 
 const resultadoConfig: Record<string, { bg: string; text: string }> = {
-  CONFIRMADA: { bg: '#0071e315', text: '#0058b0' },
-  'CONFIRMADA PARCIALMENTE': { bg: '#2d86c915', text: '#1a5f8f' },
-  'REFUTADA PARCIALMENTE': { bg: '#0a4fa615', text: '#0a4fa6' },
-  REFUTADA: { bg: '#0a4fa615', text: '#0a4fa6' },
+  CONFIRMADA: { bg: '#b3003315', text: '#8f0028' },
+  'CONFIRMADA PARCIALMENTE': { bg: '#d6335c15', text: '#990029' },
+  'NO CONFIRMADA': { bg: '#7a002215', text: '#7a0022' },
+  'REFUTADA PARCIALMENTE': { bg: '#7a002215', text: '#7a0022' },
+  REFUTADA: { bg: '#7a002215', text: '#7a0022' },
 }
 
 export default function Hipotesis() {
   return (
     <div className="space-y-8 fade-in">
       <div>
-        <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">Hipótesis de Trabajo</span>
+        <span className="text-xs font-semibold uppercase tracking-widest text-[#b30033]">Hipótesis de Trabajo</span>
         <h1 className="section-title mt-1">Hipótesis H1–H4</h1>
         <p className="section-subtitle">
           Cuatro hipótesis derivadas del marco teórico y contrastadas empíricamente mediante el cuestionario IRKA122. Forman un sistema interpretativo coherente sobre el impacto de las acciones KA122.
@@ -100,8 +101,8 @@ export default function Hipotesis() {
       <div className="bg-white rounded-2xl border border-gray-100 p-6">
         <h3 className="text-base font-semibold mb-3">Sistema interpretativo de las hipótesis</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-xl p-4 bg-[#0071e3]/5 border border-[#0071e3]/10">
-            <p className="text-xs font-semibold text-[#0071e3] mb-1">H1 + H4 → Condiciones institucionales</p>
+          <div className="rounded-xl p-4 bg-[#b30033]/5 border border-[#b30033]/10">
+            <p className="text-xs font-semibold text-[#b30033] mb-1">H1 + H4 → Condiciones institucionales</p>
             <p className="text-xs text-gray-600 leading-relaxed">
               Determinan la intensidad y durabilidad del impacto: H1 desde la velocidad diferencial del cambio individual vs. organizativo; H4 desde los obstáculos que lo frenan.
             </p>

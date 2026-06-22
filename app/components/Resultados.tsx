@@ -7,10 +7,10 @@ import {
 } from 'recharts'
 
 const SCALE_COLORS: Record<string, string> = {
-  nada: '#c7e0f9',
-  poco: '#5ac8fa',
-  bastante: '#2d86c9',
-  mucho: '#0071e3',
+  nada: '#f4cdd7',
+  poco: '#e87a93',
+  bastante: '#d6335c',
+  mucho: '#b30033',
 }
 
 function LikertBar({ data }: { data: typeof impactResults.culturaOrganizativa }) {
@@ -58,7 +58,7 @@ export default function Resultados() {
   return (
     <div className="space-y-8 fade-in">
       <div>
-        <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">Capítulo V</span>
+        <span className="text-xs font-semibold uppercase tracking-widest text-[#b30033]">Capítulo V</span>
         <h1 className="section-title mt-1">Resultados</h1>
         <p className="section-subtitle">
           Análisis descriptivo de los datos recogidos mediante el cuestionario IRKA122. Escala Likert 1–4 (Nada / Poco / Bastante / Mucho).
@@ -75,7 +75,7 @@ export default function Resultados() {
               <PolarGrid stroke="#e5e7eb" />
               <PolarAngleAxis dataKey="area" tick={{ fontSize: 11, fill: '#6e6e73' }} />
               <PolarRadiusAxis angle={90} domain={[0, 4]} tick={{ fontSize: 9, fill: '#aeaeb2' }} />
-              <Radar name="Media" dataKey="media" stroke="#0071e3" fill="#0071e3" fillOpacity={0.15} strokeWidth={2} />
+              <Radar name="Media" dataKey="media" stroke="#b30033" fill="#b30033" fillOpacity={0.15} strokeWidth={2} />
               <Tooltip formatter={(v: number) => [`${v}/4`, 'Media']} />
             </RadarChart>
           </ResponsiveContainer>
@@ -84,12 +84,12 @@ export default function Resultados() {
               <div key={d.area}>
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-xs font-medium text-gray-700">{d.area}</span>
-                  <span className="text-xs font-semibold text-[#0071e3]">{d.media}</span>
+                  <span className="text-xs font-semibold text-[#b30033]">{d.media}</span>
                 </div>
                 <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full"
-                    style={{ width: `${(d.media / 4) * 100}%`, background: d.media >= 3.5 ? '#0071e3' : d.media >= 3 ? '#2d86c9' : '#5ac8fa' }}
+                    style={{ width: `${(d.media / 4) * 100}%`, background: d.media >= 3.5 ? '#b30033' : d.media >= 3 ? '#d6335c' : '#e87a93' }}
                   />
                 </div>
               </div>
@@ -103,9 +103,9 @@ export default function Resultados() {
         <h2 className="text-lg font-semibold mb-1">Bloque B — Cultura Organizativa del Centro</h2>
         <p className="text-xs text-gray-400 mb-6">Distribución de respuestas Likert · relativo a H1</p>
         <LikertBar data={impactResults.culturaOrganizativa} />
-        <div className="mt-4 p-4 rounded-xl bg-[#0071e3]/5 border border-[#0071e3]/10">
-          <p className="text-xs text-[#0071e3] font-medium">
-            El cambio en la actitud del profesorado hacia la internacionalización obtiene la media más alta (3.44/4), mientras que los cambios en cultura institucional (3.11) confirman el impacto diferencial de H1.
+        <div className="mt-4 p-4 rounded-xl bg-[#b30033]/5 border border-[#b30033]/10">
+          <p className="text-xs text-[#b30033] font-medium">
+            Los cambios en la cultura del centro obtienen la media más alta del bloque (3,22/4) y la actitud hacia la internacionalización (3,17) le sigue de cerca: el plano organizativo se mueve de forma homogénea (cambio de primer orden).
           </p>
         </div>
       </div>
@@ -115,9 +115,9 @@ export default function Resultados() {
         <h2 className="text-lg font-semibold mb-1">Bloque C — Impacto en el Alumnado</h2>
         <p className="text-xs text-gray-400 mb-6">Distribución de respuestas Likert · relativo a H3</p>
         <LikertBar data={impactResults.impactoAlumnado} />
-        <div className="mt-4 p-4 rounded-xl bg-[#0071e3]/5 border border-[#0071e3]/10">
-          <p className="text-xs text-[#0058b0] font-medium">
-            Las competencias lingüísticas (media 3.82) destacan sobre los resultados académicos convencionales (3.33), confirmando la disociación competencia–rendimiento prevista en H3.
+        <div className="mt-4 p-4 rounded-xl bg-[#b30033]/5 border border-[#b30033]/10">
+          <p className="text-xs text-[#8f0028] font-medium">
+            Las competencias transversales —aprendizaje intercultural (3,89), motivación (3,53), competencias lingüísticas (3,29)— destacan claramente sobre los resultados académicos convencionales (2,82), confirmando la disociación competencia–rendimiento de H3 (Wilcoxon p &lt; 0,05).
           </p>
         </div>
       </div>
@@ -127,9 +127,9 @@ export default function Resultados() {
         <h2 className="text-lg font-semibold mb-1">Bloque D — Práctica Docente</h2>
         <p className="text-xs text-gray-400 mb-6">Cambio en métodos de enseñanza · relativo a H1</p>
         <LikertBar data={impactResults.impactoDocente} />
-        <div className="mt-4 p-4 rounded-xl bg-[#2d86c9]/5 border border-[#2d86c9]/20">
-          <p className="text-xs text-[#0a4fa6] font-medium">
-            El cambio en métodos de enseñanza individuales (media 2.24/4) es el indicador más bajo de todos, lo que refuerza la hipótesis H1 de que el impacto organizativo supera al metodológico individual en el corto plazo.
+        <div className="mt-4 p-4 rounded-xl bg-[#d6335c]/5 border border-[#d6335c]/20">
+          <p className="text-xs text-[#7a0022] font-medium">
+            El cambio en los métodos de enseñanza (media 2,59/4; 52,9 % responde «Poco») es el ítem de impacto más bajo: la actitud cambia, pero la práctica pedagógica del aula resiste. La brecha de H1 es interna al plano individual (1.er orden vs. 2.º orden), no entre individuo y centro.
           </p>
         </div>
       </div>
@@ -143,10 +143,10 @@ export default function Resultados() {
         {/* Satisfaction summary */}
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label: 'Muy Satisfactoria', value: 14, total: 18, color: '#0071e3' },
-            { label: 'Satisfactoria', value: 3, total: 18, color: '#2d86c9' },
-            { label: 'Recomendarían', value: 17, total: 18, color: '#0a4fa6' },
-            { label: 'Repetirían', value: 18, total: 18, color: '#5ac8fa' },
+            { label: 'Muy Satisfactoria', value: 15, total: 18, color: '#b30033' },
+            { label: 'Satisfactoria', value: 3, total: 18, color: '#d6335c' },
+            { label: 'Recomendarían', value: 18, total: 18, color: '#7a0022' },
+            { label: 'Repetirían', value: 18, total: 18, color: '#e87a93' },
           ].map((s) => (
             <div key={s.label} className="text-center p-4 rounded-xl bg-gray-50">
               <div className="text-3xl font-semibold" style={{ color: s.color }}>{s.value}</div>
@@ -172,7 +172,7 @@ export default function Resultados() {
             />
             <Bar dataKey="value" radius={[6, 6, 0, 0]}>
               {projectContext.paises.map((_, i) => (
-                <Cell key={i} fill={i === 0 ? '#0071e3' : '#c7e0f9'} />
+                <Cell key={i} fill={i === 0 ? '#b30033' : '#f4cdd7'} />
               ))}
             </Bar>
           </BarChart>
