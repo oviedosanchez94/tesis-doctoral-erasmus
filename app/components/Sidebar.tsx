@@ -2,12 +2,12 @@
 import { useState } from 'react'
 
 const navItems = [
-  { id: 'dashboard', label: 'Dashboard', icon: '⬡' },
-  { id: 'marco-teorico', label: 'Marco Teórico', icon: '◉' },
-  { id: 'diseno', label: 'Diseño de Investigación', icon: '◎' },
-  { id: 'hipotesis', label: 'Hipótesis', icon: '◈' },
-  { id: 'resultados', label: 'Resultados', icon: '◆' },
-  { id: 'conclusiones', label: 'Conclusiones', icon: '◇' },
+  { id: 'dashboard', label: 'Dashboard', icon: '🏠' },
+  { id: 'marco-teorico', label: 'Marco Teórico', icon: '📚' },
+  { id: 'diseno', label: 'Diseño de Investigación', icon: '🔬' },
+  { id: 'hipotesis', label: 'Hipótesis', icon: '💡' },
+  { id: 'resultados', label: 'Resultados', icon: '📊' },
+  { id: 'conclusiones', label: 'Conclusiones', icon: '🎓' },
 ]
 
 interface SidebarProps {

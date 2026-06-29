@@ -33,22 +33,22 @@ const conclusiones = [
 
 const aportaciones = [
   {
-    icon: '◉',
+    icon: '🔧',
     title: 'Aportación metodológica',
     desc: 'El instrumento IRKA122 constituye la primera herramienta de evaluación diseñada específicamente para capturar el impacto institucional de las acciones KA122 en centros de secundaria y FP.',
   },
   {
-    icon: '◎',
+    icon: '📋',
     title: 'Aportación empírica',
     desc: 'Una de las primeras aproximaciones sistemáticas al impacto de las KA122 en el sur de la Comunidad de Madrid, un contexto específico no estudiado previamente en la literatura internacional.',
   },
   {
-    icon: '◈',
+    icon: '🧠',
     title: 'Aportación teórica',
     desc: 'Identificación y documentación empírica de la brecha temporal entre impacto individual e institucional de la movilidad Erasmus+ en centros de educación no universitaria.',
   },
   {
-    icon: '◆',
+    icon: '🏛️',
     title: 'Aportación política',
     desc: 'Recomendaciones específicas para el SEPIE y la Comisión Europea sobre el diseño de futuras convocatorias KA122 orientadas a reducir barreras administrativas.',
   },
