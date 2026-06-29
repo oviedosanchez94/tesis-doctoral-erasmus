@@ -26,7 +26,7 @@ const conclusiones = [
     n: '4',
     color: '#7a0022',
     title: 'Barrera administrativa como obstáculo estructural (H4)',
-    desc: 'El 100% de los participantes repetiría la experiencia, evidenciando que la motivación pedagógica no es el obstáculo. Sin embargo, los trámites KA122 (media 2,24 de sencillez —el ítem más bajo, 64,7% negativo—) y la ayuda institucional (2,53) confirman que la brecha de capacidad administrativa (Flisi et al., 2021) persiste. La crítica burocrática no erosiona la adhesión (ρ = −0,120): esa es la paradoja central de H4.',
+    desc: 'El 100% de los participantes repetiría la experiencia, evidenciando que la motivación pedagógica no es el obstáculo. Sin embargo, los trámites KA122 (media 2,24 de sencillez —el ítem más bajo, 64,7% negativo—) y la ayuda institucional (2,53) confirman que la brecha de capacidad administrativa (Flisi et al., 2021) persiste. La crítica burocrática no erosiona la adhesión (ρ = −0,068; p = 0,796): esa es la paradoja central de H4.',
     implication: 'La sostenibilidad del programa depende de reducir la carga burocrática más que de incrementar la motivación del profesorado.',
   },
 ]

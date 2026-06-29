@@ -198,9 +198,9 @@ export const hypotheses = [
     color: '#e87a93',
     title: 'Competencias transversales vs. rendimiento académico',
     summary: 'La KA122 mejora las competencias transversales del alumnado, pero esa mejora no se traslada a los resultados académicos convencionales: ambas dimensiones no evolucionan en paralelo.',
-    result: 'CONFIRMADA',
+    result: 'NO CONFIRMADA',
     resultColor: '#8f0028',
-    evidence: 'Las competencias transversales puntúan alto —motivación M = 3,53; competencias lingüísticas M = 3,29; trabajo en equipo M = 3,24— frente a los resultados académicos (M = 2,82). Las tres pruebas de Wilcoxon confirman que la diferencia es significativa (p = 0,003; 0,011; 0,035) y ninguna competencia correlaciona con el rendimiento (todos los p > 0,18). La disociación queda empíricamente establecida.',
+    evidence: 'Las competencias transversales puntúan alto —motivación M = 3,53; competencias lingüísticas M = 3,29; trabajo en equipo M = 3,24— frente a los resultados académicos (M = 2,82). Las tres pruebas de Wilcoxon confirman que la diferencia es significativa (p = 0,003; 0,011; 0,035) y ninguna competencia correlaciona con el rendimiento (todos los p > 0,18). La hipótesis no se confirma en su formulación literal: las dos dimensiones no evolucionan en paralelo, y esa refutación constituye la aportación más informativa.',
     keyMetric: '3,29 vs 2,82',
     keyMetricLabel: 'Competencias lingüísticas vs. resultados académicos',
     details: [
@@ -217,14 +217,14 @@ export const hypotheses = [
     summary: 'Las principales dificultades percibidas son de naturaleza administrativa e institucional, no pedagógica ni motivacional; y esa carga no erosiona la intención de repetir.',
     result: 'CONFIRMADA',
     resultColor: '#b30033',
-    evidence: 'Los dos ítems administrativos son los más bajos del cuestionario —sencillez de los trámites M = 2,24 (64,7 % negativo); ayuda institucional M = 2,53—, mientras que motivación y satisfacción puntúan alto. Pese a ello, el 100 % se incorporó por elección propia y repetiría, y la insatisfacción con los trámites no se asocia a menor adhesión (ρ = −0,120; p = 0,670). La paradoja —crítica burocrática + adhesión unánime— es el hallazgo central de H4.',
+    evidence: 'Los dos ítems administrativos son los más bajos del cuestionario —sencillez de los trámites M = 2,24 (64,7 % negativo); ayuda institucional M = 2,53—, mientras que motivación y satisfacción puntúan alto. Pese a ello, el 100 % se incorporó por elección propia y repetiría, y la insatisfacción con los trámites no se asocia a menor adhesión (ρ = −0,068; p = 0,796). La paradoja —crítica burocrática + adhesión unánime— es el hallazgo central de H4.',
     keyMetric: '100 %',
     keyMetricLabel: 'Repetiría la experiencia',
     details: [
       'Sencillez de trámites M = 2,24 — el ítem más bajo (64,7 % en categorías negativas)',
       'Ayuda institucional M = 2,53 (52,9 % negativo)',
       '100 % se incorporó por elección propia y repetiría la experiencia',
-      'Trámites ↔ recomendar el programa: ρ = −0,120 (p = 0,670) → independencia',
+      'Trámites ↔ recomendar el programa: ρ = −0,068 (p = 0,796) → independencia',
     ],
   },
 ]
