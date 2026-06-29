@@ -49,7 +49,8 @@ const cap2clusters = [
       { autor: 'Guskey', year: '2002', idea: 'La práctica precede a la creencia', desc: 'Las creencias del docente no cambian primero: son los resultados positivos observados en el aula los que consolidan después el cambio de creencias.', rel: null },
       { autor: 'Clarke y Hollingsworth', year: '2002', idea: '4 dominios interconectados', desc: 'Personal, práctica, consecuencias y externo. Sin el "ciclo de mediación" entre dominios, el estímulo externo (la movilidad) no se traduce en cambio pedagógico.', rel: 'sitúa el mecanismo de Guskey dentro de un ciclo de 4 dominios' },
       { autor: 'Mezirow', year: '1997', idea: 'Experiencias desorientadoras', desc: 'El aprendizaje adulto significativo exige revisar los propios marcos de referencia. La movilidad puede ser una experiencia desorientadora, pero solo con reflexión sostenida.', rel: 'aporta el disparador: una experiencia que rompe el marco previo' },
-      { autor: 'Doyle et al.', year: '2024', idea: 'Ciclo de impacto retardado', desc: 'Los efectos de la movilidad sobre la práctica docente no son visibles de inmediato: se manifiestan con un desfase de 6 a 18 meses tras el retorno.', rel: 'pone fecha al ciclo: el cambio tarda 6-18 meses en verse' },
+      { autor: 'Hargreaves y Fullan', year: '2012', idea: 'Capital profesional: tres componentes', desc: 'Capital humano (competencias individuales), capital social (redes colaborativas entre docentes) y capital decisional (juicios profesionales sólidos). La movilidad contribuye simultáneamente a los tres: enriquece el repertorio individual, alimenta las redes transnacionales y fortalece la capacidad de juicio.', rel: 'escala el impacto individual al plano colectivo: el capital se construye en red' },
+      { autor: 'Mouraz et al.', year: '2024', idea: 'Agencia curricular y transferencia organizativa', desc: 'Los participantes experimentan transformaciones competenciales de forma directa e inmediata, pero la transferencia de dichos aprendizajes al conjunto de la organización es un proceso mediado por variables relacionales, estructurales e institucionales que exceden la capacidad individual del docente.', rel: 'distingue entre impacto individual inmediato e impacto organizativo mediado' },
     ],
   },
   {
@@ -60,7 +61,8 @@ const cap2clusters = [
     icon: '◈',
     nodes: [
       { autor: 'Byram y Feng', year: '2004', idea: '5 componentes de la competencia', desc: 'Conocimiento propio y ajeno, habilidades de interpretación, habilidades de interacción, actitud de apertura y evaluación crítica de las propias perspectivas culturales.', rel: null },
-      { autor: 'Dervin', year: '2009', idea: '"Interculturalidad líquida"', desc: 'Crítica a la competencia intercultural superficial: adquirir estereotipos positivos sobre otra cultura sin revisar de verdad los propios marcos de referencia. Riesgo propio de la movilidad corta.', rel: 'cuestiona si el 5º componente de Byram y Feng se cumple en estancias breves' },
+      { autor: 'Dervin y Dirba', year: '2006', idea: 'Interculturalidad "sólida" vs. "líquida"', desc: 'La interculturalidad "sólida" (esencialista) concibe la cultura como un conjunto fijo de rasgos nacionales. Frente a ella, la interculturalidad "líquida" entiende identidad y cultura como construcciones en cambio constante. El riesgo de la movilidad corta es quedarse en una "sólida": adquirir estereotipos positivos sin alcanzar la reflexividad crítica (véase también Dervin, 2009).', rel: 'cuestiona si el 5º componente de Byram y Feng se cumple en estancias breves' },
+      { autor: 'Hoskins y Deakin Crick', year: '2010', idea: 'Ciudadanía activa y dimensión europea', desc: 'La movilidad proyecta disposiciones cívicas más allá del marco nacional hacia la construcción de una comunidad política europea. El docente pasa a concebirse como educador europeo comprometido con los valores del proyecto educativo común; el alumnado refuerza su sentimiento de pertenencia europea.', rel: 'añade la dimensión cívica y la identidad europea al modelo de Byram y Feng' },
     ],
   },
   {
@@ -86,7 +88,7 @@ const cap3modelo = [
 const sesgos = [
   { name: 'Sesgo de nivel educativo', desc: 'Los estudios más robustos (Erasmus Impact Study, Souto-Otero et al., 2021) se circunscriben a la educación superior, no extrapolables sin más a secundaria y FP.' },
   { name: 'Sesgo de escala individual', desc: 'La literatura privilegia al participante como unidad de análisis, ignorando el impacto organizativo sobre el centro —objetivo prioritario explícito del Reglamento (UE) 2021/817.' },
-  { name: 'Sesgo de ciclo programático', desc: 'Las acciones KA122 no existían en el ciclo 2014-2020: son una modalidad creada con el ciclo 2021-2027. La investigación existente se apoya en programas anteriores a su creación, por lo que el tramo realmente transcurrido del ciclo (2021-2025) carece todavía de bibliografía académica consolidada sobre KA122.' },
+  { name: 'Sesgo de ciclo programático', desc: 'La práctica totalidad de la investigación existente analiza el impacto de movilidades en el marco del ciclo 2014-2020 o de ciclos anteriores, sin considerar las especificidades del diseño renovado del programa 2021-2027 y, en particular, las características y los desafíos específicos de las acciones KA122 como modalidad de acceso para centros sin experiencia previa.' },
 ]
 
 const competencias2006 = [
@@ -307,7 +309,7 @@ export default function MarcoTeorico() {
 
         <div className="mt-6 p-4 rounded-xl bg-gray-50 border border-gray-100">
           <p className="text-xs text-gray-600 leading-relaxed">
-            La evidencia disponible documenta una jerarquía de efectos: más fuertes y consistentes en lo actitudinal e individual; más débiles y heterogéneos en las prácticas pedagógicas concretas; más difíciles de documentar en la cultura y la organización de los centros (Souto-Otero et al., 2021).
+            La evidencia disponible documenta una jerarquía de efectos: más fuertes y consistentes en lo actitudinal e individual; más débiles y heterogéneos en las prácticas pedagógicas concretas; más difíciles de documentar en la cultura y la organización de los centros (Souto-Otero et al., 2021; Heinzmann et al., 2024).
           </p>
         </div>
       </div>
@@ -428,7 +430,7 @@ export default function MarcoTeorico() {
         <div className="mt-4 p-4 rounded-xl bg-[#b30033]/5 border border-[#b30033]/20">
           <p className="text-sm font-semibold text-[#b30033] mb-1.5">Laguna identificada</p>
           <p className="text-xs text-gray-700 leading-relaxed">
-            Ningún estudio previo aborda el impacto de las KA122 en centros de secundaria del sur de la Comunidad de Madrid. Esta investigación constituye una de las primeras aproximaciones empíricas sistemáticas a este fenómeno.
+            No se trata de demostrar que las acciones KA122 generan impacto —los datos exploratorios disponibles ya sugieren que lo hacen—, sino de caracterizar con rigor ese impacto en términos de desarrollo competencial institucional, identificar las condiciones que lo facilitan o lo bloquean, y aportar evidencia empírica sistemática sobre un contexto territorial —el sur de la Comunidad de Madrid— que es representativo de las zonas metropolitanas de alta complejidad social sistemáticamente subrepresentadas en la investigación existente.
           </p>
         </div>
       </div>

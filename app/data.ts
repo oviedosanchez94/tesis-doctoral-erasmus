@@ -281,7 +281,7 @@ export const theorySections: Array<{
       },
       {
         name: 'Sesgo de ciclo programático',
-        desc: 'Las KA122 son una modalidad de 2021-2027 sin bibliografía académica consolidada. Esta investigación es una de las primeras aproximaciones empíricas sistemáticas.',
+        desc: 'La práctica totalidad de la investigación existente analiza el impacto de movilidades en el marco del ciclo 2014-2020 o anteriores, sin considerar las especificidades del diseño 2021-2027 ni las características de las KA122 como modalidad de acceso para centros sin experiencia previa.',
       },
     ],
   },

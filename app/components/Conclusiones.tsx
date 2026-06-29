@@ -55,10 +55,11 @@ const aportaciones = [
 ]
 
 const limitaciones = [
-  'Tamaño muestral reducido (N=18) — limita la generalización estadística pero permite profundidad cualitativa',
-  'Ausencia de grupo de control — no permite establecer relaciones causales directas',
-  'Carácter transversal — no captura la evolución del impacto a largo plazo',
-  'Posible sesgo de deseabilidad social en las respuestas al cuestionario',
+  'Limitación muestral (N=18): el tamaño y la naturaleza censal por accesibilidad limitan la generalización estadística, aunque permiten una aproximación sistemática al universo accesible del territorio estudiado.',
+  'Limitación de diseño: la ausencia de medidas pre y post intervención impide atribuir causalmente los cambios observados a la participación en la KA122.',
+  'Limitación instrumental: el cuestionario IRKA122 genera datos autoinformados susceptibles al sesgo de deseabilidad social. Los resultados se interpretan como percepción experta, no como medida objetiva del impacto.',
+  'Limitación de la medida indirecta del rendimiento académico: la percepción docente sobre el rendimiento es una aproximación válida pero no equivalente a la medida directa de calificaciones o pruebas estandarizadas.',
+  'Limitación reflexiva: la doble posición del investigador —coordinador de proyectos KA122 y analista de sus efectos— es fuente potencial de sesgo, gestionada mediante distancia analítica explícita y transparencia metodológica.',
 ]
 
 export default function Conclusiones() {
@@ -132,12 +133,9 @@ export default function Conclusiones() {
         <h2 className="text-lg font-semibold mb-4">Líneas de Investigación Futura</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
-            { title: 'Estudio longitudinal', desc: 'Seguimiento a 3–5 años del impacto institucional de las KA122 para capturar el cambio organizativo de segundo orden.' },
-            { title: 'Ampliación territorial', desc: 'Extensión del estudio a otras comunidades autónomas para comparar el efecto del contexto socioeconómico en el impacto.' },
-            { title: 'Diseño cuasi-experimental', desc: 'Incorporación de grupos de control (centros comparables sin participación KA122) para establecer relaciones causales.' },
-            { title: 'Marco evaluativo alternativo', desc: 'Desarrollo de indicadores de evaluación del programa coherentes con las competencias clave de 2018, más allá del rendimiento académico formal.' },
-            { title: 'Análisis de la fase de reintegración', desc: 'Estudio específico del proceso de transferencia del aprendizaje individual al colectivo tras la movilidad.' },
-            { title: 'Impacto en alumnado FP', desc: 'Investigación centrada exclusivamente en el impacto sobre el alumnado de FP y su inserción laboral posterior.' },
+            { title: 'Comparativa KA121 vs. KA122', desc: 'Diseño cuasi-experimental para contrastar si los centros con acreditación previa (KA121) logran conectar los dominios externo y personal con la transformación pedagógica sostenida que las KA122 no alcanzan. Permitiría discernir si la limitación documentada responde al diseño de la acción o a condicionantes más generales del sistema.' },
+            { title: 'Comparativa intermetropolitana europea', desc: 'Estudio comparado entre áreas metropolitanas periurbanas con alta diversidad cultural y menor tradición de internacionalización: Lisboa, Bruselas, Berlín y la periferia de París. Requiere adaptación del IRKA122 y red interuniversitaria europea.' },
+            { title: 'Comparativa diacrónica 2021-2027 / post-2027', desc: 'Utilizar esta tesis como línea base del ciclo 2021-2027 y contrastarla con cohortes del próximo Marco Financiero Plurianual, mediante técnicas de matching sociodemográfico, para medir el impacto de los ajustes programáticos sobre la capacidad transformadora de las KA122.' },
           ].map((f) => (
             <div key={f.title} className="p-4 rounded-xl border border-gray-100 hover:border-[#b30033]/30 hover:shadow-sm transition-all">
               <p className="text-sm font-semibold text-[#1d1d1f] mb-1">{f.title}</p>
