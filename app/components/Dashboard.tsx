@@ -89,7 +89,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <MetricCard value="18" label="Participantes en la muestra" sub="Docentes y equipo directivo" />
           <MetricCard value="100%" label="Repetirían la experiencia" sub="18 de 18 participantes" />
-          <MetricCard value="3,89" label="Aprendizaje intercultural del alumnado" sub="Media más alta · escala 1–4 Likert" />
+          <MetricCard value="100%" label="Aprendizaje intercultural del alumnado" sub="18 de 18 · ninguna respuesta negativa" />
           <MetricCard value="13" label="Países socios distintos" sub="Alemania el más frecuente (72%)" />
         </div>
       </div>
