@@ -151,7 +151,7 @@ export default function Resultados() {
       </div>
 
       {/* Cultura organizativa */}
-      <Accordion title="Bloque B — Cultura Organizativa del Centro" subtitle="Distribución de respuestas Likert · relativo a H1" defaultOpen>
+      <Accordion title="Bloque B — Cultura Organizativa del Centro" subtitle="Distribución de respuestas Likert · relativo a H1">
         <LikertBar data={impactResults.culturaOrganizativa} />
         <div className="mt-4 p-4 rounded-xl bg-[#b30033]/5 border border-[#b30033]/10">
           <p className="text-xs text-[#b30033] font-medium">
