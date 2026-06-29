@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: '🏠' },
@@ -44,9 +45,18 @@ export default function Sidebar({ active, onNavigate, mobileOpen = false, onMobi
         {/* Logo / Header */}
         <div className="flex items-center justify-between px-4 py-5 border-b border-gray-100">
           {!collapsed && (
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#b30033]">Tesis Doctoral</span>
-              <p className="text-[11px] text-gray-400 mt-0.5 leading-tight">Erasmus+ KA122</p>
+            <div className="flex flex-col gap-2 min-w-0">
+              <Image
+                src="/logo-uclm.jpg"
+                alt="Logo UCLM"
+                width={100}
+                height={40}
+                className="object-contain"
+              />
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#b30033]">Tesis Doctoral</span>
+                <p className="text-[11px] text-gray-500 mt-0.5 leading-tight font-medium">Javier Oviedo Sánchez</p>
+              </div>
             </div>
           )}
           <button
