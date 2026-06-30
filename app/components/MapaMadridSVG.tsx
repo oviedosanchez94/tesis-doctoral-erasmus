@@ -9,7 +9,7 @@ export default function MapaMadridSVG() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { width, height, features } = mapData as { width: number; height: number; features: Feature[] }
 
-  // Render non-participants first, participants last (so they appear on top)
+  // Render non-participants first, participants last (so they appear on top of borders)
   const sorted = [...features].sort((a, b) => (a.participante ? 1 : 0) - (b.participante ? 1 : 0))
 
   const relativePos = (clientX: number, clientY: number) => {
@@ -32,7 +32,8 @@ export default function MapaMadridSVG() {
             fill={f.participante ? '#b30033' : '#f3f4f6'}
             fillRule="evenodd"
             stroke="#ffffff"
-            strokeWidth={0.6}
+            strokeWidth={0.7}
+            strokeLinejoin="round"
             style={{ cursor: 'pointer' }}
             onMouseEnter={(e) => {
               const { x, y } = relativePos(e.clientX, e.clientY)
