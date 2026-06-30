@@ -1,87 +1,74 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import mapData from '../data-map.json'
-
-const PARTICIPANTES = new Set([
-  'Leganés',
-  'Alcorcón',
-  'Parla',
-  'Aranjuez',
-  'San Martín de Valdeiglesias',
-])
 
 type Feature = { name: string; participante: boolean; d: string }
 
-// Compute bounding-box centroid from a path's d attribute
-function centroid(d: string): [number, number] {
-  const nums = d.match(/[-\d.]+,[-\d.]+/g) || []
-  let mnX = 9999, mxX = -9999, mnY = 9999, mxY = -9999
-  nums.forEach(n => {
-    const [x, y] = n.split(',').map(Number)
-    if (x < mnX) mnX = x; if (x > mxX) mxX = x
-    if (y < mnY) mnY = y; if (y > mxY) mxY = y
-  })
-  return [(mnX + mxX) / 2, (mnY + mxY) / 2]
-}
-
 export default function MapaMadridSVG() {
-  const [tooltip, setTooltip] = useState<{ name: string; mx: number; my: number } | null>(null)
+  const [tooltip, setTooltip] = useState<{ name: string; participante: boolean; x: number; y: number } | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const { width, height, features } = mapData as { width: number; height: number; features: Feature[] }
 
   // Render non-participants first, participants last (so they appear on top)
   const sorted = [...features].sort((a, b) => (a.participante ? 1 : 0) - (b.participante ? 1 : 0))
 
+  const relativePos = (clientX: number, clientY: number) => {
+    const rect = containerRef.current?.getBoundingClientRect()
+    if (!rect) return { x: clientX, y: clientY }
+    return { x: clientX - rect.left, y: clientY - rect.top }
+  }
+
   return (
-    <div className="relative w-full select-none" style={{ aspectRatio: `${width}/${height}` }}>
+    <div ref={containerRef} className="relative w-full select-none" style={{ aspectRatio: `${width}/${height}` }}>
       <svg
         viewBox={`0 0 ${width} ${height}`}
         style={{ width: '100%', height: '100%', display: 'block' }}
         onMouseLeave={() => setTooltip(null)}
       >
-        {sorted.map((f) => {
-          const [cx, cy] = centroid(f.d)
-          return (
-            <path
-              key={f.name}
-              d={f.d}
-              fill={f.participante ? '#b30033' : '#ffffff'}
-              fillRule="evenodd"
-              stroke="#d1d5db"
-              strokeWidth={0.5}
-              style={{ cursor: f.participante ? 'pointer' : 'default' }}
-              onMouseEnter={() => setTooltip({ name: f.name, mx: cx, my: cy })}
-              onMouseLeave={() => setTooltip(null)}
-            >
-              <title>{f.name}</title>
-            </path>
-          )
-        })}
-
-        {/* Tooltip at municipality centroid */}
-        {tooltip && PARTICIPANTES.has(tooltip.name) && (() => {
-          const rectW = tooltip.name.length * 7 + 20
-          const rectH = 24
-          const tx = Math.min(Math.max(tooltip.mx - rectW / 2, 4), width - rectW - 4)
-          const ty = Math.max(tooltip.my - rectH - 10, 4)
-          return (
-            <g pointerEvents="none">
-              <rect x={tx} y={ty} width={rectW} height={rectH} rx={5} fill="#1d1d1f" opacity={0.88} />
-              <text x={tx + rectW / 2} y={ty + 16} textAnchor="middle" fill="white" fontSize={11} fontFamily="-apple-system,sans-serif">
-                {tooltip.name}
-              </text>
-            </g>
-          )
-        })()}
-
-        {/* Legend */}
-        <g transform={`translate(10, ${height - 46})`}>
-          <rect width={162} height={42} rx={7} fill="white" fillOpacity={0.95} stroke="#e5e7eb" strokeWidth={0.5} />
-          <rect x={10} y={9} width={11} height={11} rx={2} fill="#b30033" />
-          <text x={27} y={20} fontSize={10.5} fill="#1d1d1f" fontFamily="-apple-system,sans-serif">Municipio participante (5)</text>
-          <rect x={10} y={26} width={11} height={11} rx={2} fill="white" stroke="#d1d5db" strokeWidth={0.8} />
-          <text x={27} y={37} fontSize={10.5} fill="#6e6e73" fontFamily="-apple-system,sans-serif">Resto de municipios</text>
-        </g>
+        {sorted.map((f) => (
+          <path
+            key={f.name}
+            d={f.d}
+            fill={f.participante ? '#b30033' : '#f3f4f6'}
+            fillRule="evenodd"
+            stroke="#ffffff"
+            strokeWidth={0.6}
+            style={{ cursor: 'pointer' }}
+            onMouseEnter={(e) => {
+              const { x, y } = relativePos(e.clientX, e.clientY)
+              setTooltip({ name: f.name, participante: f.participante, x, y })
+            }}
+            onMouseMove={(e) => {
+              const { x, y } = relativePos(e.clientX, e.clientY)
+              setTooltip((t) => (t ? { ...t, x, y } : t))
+            }}
+            onMouseLeave={() => setTooltip(null)}
+          />
+        ))}
       </svg>
+
+      {/* Legend */}
+      <div className="absolute left-2.5 bottom-2.5 bg-white/95 border border-gray-100 rounded-xl shadow-sm px-3 py-2.5 space-y-1.5">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-sm bg-[#b30033]" />
+          <span className="text-[10.5px] text-[#1d1d1f]">Municipio participante (5)</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-sm bg-gray-100 border border-gray-300" />
+          <span className="text-[10.5px] text-gray-500">Resto de municipios</span>
+        </div>
+      </div>
+
+      {/* Tooltip */}
+      {tooltip && (
+        <div
+          className="absolute z-50 bg-white border border-gray-100 rounded-xl shadow-md px-3 py-2 pointer-events-none"
+          style={{ left: tooltip.x + 12, top: tooltip.y + 12 }}
+        >
+          <p className="text-xs font-semibold text-[#1d1d1f]">{tooltip.participante ? '📍' : '◦'} {tooltip.name}</p>
+          <p className="text-xs text-gray-500 mt-0.5">{tooltip.participante ? 'Municipio participante' : 'No participa en la muestra'}</p>
+        </div>
+      )}
     </div>
   )
 }
