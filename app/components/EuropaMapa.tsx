@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 import { projectContext } from '../data'
 
@@ -19,9 +19,16 @@ function colorFor(value: number) {
 
 export default function EuropaMapa() {
   const [tooltip, setTooltip] = useState<{ name: string; value: number; flag: string; x: number; y: number } | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const relativePos = (clientX: number, clientY: number) => {
+    const rect = containerRef.current?.getBoundingClientRect()
+    if (!rect) return { x: clientX, y: clientY }
+    return { x: clientX - rect.left, y: clientY - rect.top }
+  }
 
   return (
-    <div className="relative w-full" style={{ aspectRatio: '16/11' }}>
+    <div ref={containerRef} className="relative w-full" style={{ aspectRatio: '16/11' }}>
       <ComposableMap
         projection="geoAzimuthalEqualArea"
         projectionConfig={{ rotate: [-20, -52, 0], scale: 900 }}
@@ -47,14 +54,18 @@ export default function EuropaMapa() {
                     pressed: { outline: 'none' },
                   }}
                   onMouseEnter={(e) => {
+                    const { x, y } = relativePos(e.clientX, e.clientY)
                     if (isSpain) {
-                      setTooltip({ name: 'España', value: 0, flag: '🇪🇸', x: e.clientX, y: e.clientY })
+                      setTooltip({ name: 'España', value: 0, flag: '🇪🇸', x, y })
                     } else if (data) {
-                      setTooltip({ name: data.name, value: data.value, flag: data.flag, x: e.clientX, y: e.clientY })
+                      setTooltip({ name: data.name, value: data.value, flag: data.flag, x, y })
                     }
                   }}
                   onMouseMove={(e) => {
-                    if (data || isSpain) setTooltip((t) => (t ? { ...t, x: e.clientX, y: e.clientY } : t))
+                    if (data || isSpain) {
+                      const { x, y } = relativePos(e.clientX, e.clientY)
+                      setTooltip((t) => (t ? { ...t, x, y } : t))
+                    }
                   }}
                   onMouseLeave={() => setTooltip(null)}
                 />
@@ -66,7 +77,7 @@ export default function EuropaMapa() {
 
       {tooltip && (
         <div
-          className="fixed z-50 bg-white border border-gray-100 rounded-xl shadow-md px-3 py-2 pointer-events-none"
+          className="absolute z-50 bg-white border border-gray-100 rounded-xl shadow-md px-3 py-2 pointer-events-none"
           style={{ left: tooltip.x + 12, top: tooltip.y + 12 }}
         >
           <p className="text-xs font-semibold text-[#1d1d1f]">{tooltip.flag} {tooltip.name}</p>
