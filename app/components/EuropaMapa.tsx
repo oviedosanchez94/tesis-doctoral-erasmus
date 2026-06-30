@@ -33,7 +33,7 @@ export default function EuropaMapa() {
               const name = geo.properties.name as string
               const isSpain = name === 'Spain'
               const data = valueByCountry.get(name)
-              const fill = isSpain ? '#1d1d1f' : data ? colorFor(data.value) : '#f3f4f6'
+              const fill = isSpain ? '#ffffff' : data ? colorFor(data.value) : '#f3f4f6'
               return (
                 <Geography
                   key={geo.rsmKey}
